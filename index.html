@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <title>ByBicycle</title>
-    </head>
-    <body>
-<img name='slide'>
-    
-    <script src='js/script.js'></script>
-    <button id='prevBtn' type="button" onclick="prevImg()">Précédent</button>
-    <button id='playBtn' type="button" onclick="playImg()">Play</button>
-    <button id='pauseBtn' type='button' onclick ="pauseImg()">Pause</button>
-    <button id='nextBtn' type="button" onclick ="nextImg()">Suivant</button>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>ByBicycle</title>
+</head>
+
+<body>
+    <img id='diapo'>
+
+
+    <button id='prevBtn' type="button">Précédent</button>
+    <button id='playBtn' type="button">Play</button>
+    <button id='pauseBtn' type='button'>Pause</button>
+    <button id='nextBtn' type="button">Suivant</button>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src='js/slider.js'></script>
 
 </body>
+
 </html>
