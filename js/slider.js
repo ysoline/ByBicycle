@@ -48,7 +48,6 @@ let images = ['bike1', 'bike2', 'bike3'];
 
 let mySlider = new Slider('diapo', images, 'img/', 5000);
 
-//typeof window.addEventListener == 'undefined' ? window.attachEvent("onload", initslider) : window.addEventListener("load", initslider, false);
 
 //interraction : bouton cliquer
 $('#pauseBtn').on('click', function () {
@@ -59,4 +58,7 @@ $('#nextBtn').on('click', function () {
 })
 $('#prevBtn').on('click', function () {
     mySlider.preview();
+})
+$('#playBtn').on('click', function () {
+    mySlider.autoplay();
 })
