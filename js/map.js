@@ -1,0 +1,22 @@
+//Initialisation de la latitude et de la longitude (ville: Nante)
+var lat = 47.218371;
+var lon = -1.553621;
+var mymap = null;
+
+//Initialisation de la carte
+function initMap() {
+    mymap = L.map('mapid').setView([lat, lon], 13);
+
+    //Récupération du "tiles"
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        minZoom: 1,
+        maxZoom: 20,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1IjoieXNvbGluZSIsImEiOiJjazF4dmY0bXgwZmZpM21sOGlzOTN4aGszIn0.YBzO02ZF423AzJFxbjJIkg'
+    }).addTo(mymap);
+}
+
+window.onload = function () {
+    initMap();
+};
