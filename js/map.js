@@ -1,8 +1,8 @@
 class Map {
-    constructor(lat, lon) {
+    constructor(lat, lon, map) {
         this.lat = lat;
         this.lon = lon;
-        this.map = document.getElementById('mapid');
+        this.map = map;
     }
 
     initMap() {
@@ -19,5 +19,5 @@ class Map {
     }
 }
 
-const myMap = new Map(47.21837, -1.553621);
+const myMap = new Map(47.21837, -1.553621, mapid);
 myMap.initMap();
