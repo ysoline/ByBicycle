@@ -18,7 +18,7 @@ class Map {
 
     }
     markers() {
-        ajaxGet('https://api.jcdecaux.com/vls/v1/stations?contract=nantes&apiKey=a0ce65c3665035a0a4c7ef02805b70e171c87636', function (reponse) {
+        ajaxGet('https://api.jcdecaux.com/vls/v1/stations?contract=Nantes&apiKey=a0ce65c3665035a0a4c7ef02805b70e171c87636', function (reponse) {
             let stations = JSON.parse(reponse);
             stations.forEach((station) => {
                 let marker = L.marker([
@@ -36,8 +36,8 @@ class Map {
         })
     }
     loadMap() {
-        this.initMap,
-            this.markers
+        this.initMap(),
+            this.markers()
     }
 }
 
