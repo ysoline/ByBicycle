@@ -1,8 +1,8 @@
 class Map {
     constructor(lat, lon, map) {
-        this.lat = lat;
-        this.lon = lon;
-        this.map = map;
+        this.lat = lat; //latitude
+        this.lon = lon; //longitude
+        this.map = map; //cible dans le dom
     }
 
     initMap() {
@@ -17,7 +17,32 @@ class Map {
         }).addTo(this.map);
 
     }
+    markers() {
+        ajaxGet('https://api.jcdecaux.com/vls/v1/stations?contract=nantes&apiKey=a0ce65c3665035a0a4c7ef02805b70e171c87636', function (reponse) {
+            let stations = JSON.parse(reponse);
+            stations.forEach((station) => {
+                let marker = L.marker([
+                    this.position = station.position,
+                    this.address = station.address,
+                    this.number = station.number,
+                    this.bike_stands = station.bike_stands,
+                    this.available_bike_stands = station.available_bike_stands,
+                    this.available_bikes = station.available_bikes,
+                    this.status = station.status,
+                    this.bonus = station.bonus,
+                    this.banking = station.banking
+                ])
+            }).addTo(this.map);
+        })
+    }
+    loadMap() {
+        this.initMap,
+            this.markers
+    }
 }
 
 const myMap = new Map(47.21837, -1.553621, mapid);
-myMap.initMap();
+myMap.loadMap();
+
+//const apikey = a0ce65c3665035a0a4c7ef02805b70e171c87636;
+//const contrat = Nantes;
