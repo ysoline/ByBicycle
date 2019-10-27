@@ -3,9 +3,7 @@ class Map {
         this.lat = lat; //latitude
         this.lon = lon; //longitude
         this.map = map; //cible dans le dom
-    }
 
-    initMap() {
         this.map = L.map(this.map).setView([this.lat, this.lon], 15);
 
         this.layer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -15,34 +13,38 @@ class Map {
             id: 'mapbox.streets',
             accessToken: 'pk.eyJ1IjoieXNvbGluZSIsImEiOiJjazF4dmY0bXgwZmZpM21sOGlzOTN4aGszIn0.YBzO02ZF423AzJFxbjJIkg'
         }).addTo(this.map);
-
-    }
-    markers() {
-        ajaxGet('https://api.jcdecaux.com/vls/v1/stations?contract=Nantes&apiKey=a0ce65c3665035a0a4c7ef02805b70e171c87636', function (reponse) {
-            let stations = JSON.parse(reponse);
-            stations.forEach((station) => {
-                let marker = L.marker([
-                    this.position = station.position,
-                    this.address = station.address,
-                    this.number = station.number,
-                    this.bike_stands = station.bike_stands,
-                    this.available_bike_stands = station.available_bike_stands,
-                    this.available_bikes = station.available_bikes,
-                    this.status = station.status,
-                    this.bonus = station.bonus,
-                    this.banking = station.banking
-                ])
-            }).addTo(this.map);
-        })
-    }
-    loadMap() {
-        this.initMap(),
-            this.markers()
+        console.log(this.map);
     }
 }
+class Markers {
+    constructor(map) {
+        this.map = map,
 
-const myMap = new Map(47.21837, -1.553621, mapid);
-myMap.loadMap();
+            $.ajax({
+                url: 'https://api.jcdecaux.com/vls/v1/stations?contract=nantes&apiKey=a0ce65c3665035a0a4c7ef02805b70e171c87636',
+                type: 'GET',
+                success: function (reponse) {
+                    console.log(this.map);
+                    // reponse.forEach((station) => {
+                    for (let station of reponse) {
+                        let marker = L.marker([
+                            this.position = station.position,
+                            this.address = station.address,
+                            this.number = station.number,
+                            this.bike_stands = station.bike_stands,
+                            this.available_bike_stands = station.available_bike_stands,
+                            this.available_bikes = station.available_bikes,
+                            this.status = station.status,
+                            this.bonus = station.bonus,
+                            this.banking = station.banking
+                        ]).addTo(this.map);
+
+                    }
+                }
+            })
+    }
+
+}
 
 //const apikey = a0ce65c3665035a0a4c7ef02805b70e171c87636;
 //const contrat = Nantes;
