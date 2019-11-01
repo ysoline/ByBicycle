@@ -1,3 +1,9 @@
-const myMap = new Map(47.21837, -1.553621, mapid);
-const newMarker = new Markers();
-newMarker.marker();
+
+const initMap = (lat, lng, map) => {
+    let newMap = new Map(lat, lng, map);
+    newMap.markers();
+}
+
+
+initMap(47.21837, -1.55624, mapid)
+
