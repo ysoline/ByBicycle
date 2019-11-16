@@ -1,11 +1,11 @@
 class Markers {
-    constructor(lat, lng, name, address, bike_stands, status, banking, bonus, available_bike_stands, available_bikes) {
+    constructor(lat, lng, name, address, bike_stands, statut, banking, bonus, available_bike_stands, available_bikes) {
         this.lat = lat;
         this.lng = lng;
         this.name = name;
         this.address = address;
         this.bike_stands = bike_stands;
-        this.status = status;
+        this.statut = statut;
         this.banking = banking;
         this.bonus = bonus;
         this.available_bike_stands = available_bike_stands;
@@ -30,7 +30,7 @@ class Markers {
 
     addMap(map) {
 
-        if (this.status == "OPEN" && this.available_bikes > 0) {
+        if (this.statut == "OPEN" && this.available_bikes != 0) {
             this.Lmarker = L.marker([
                 this.lat,
                 this.lng,
@@ -52,37 +52,47 @@ class Markers {
             //Affichage addresse station
             document.getElementById('station_address').innerHTML = this.address.toUpperCase();
 
-            //Affiche status station, si ouverte, affiche le nombre de vélos disponibles
-            if (this.status == 'OPEN') {
-                //Affiche formulaire de réservation
-                document.getElementById('booking').style.opacity = 1;
+            //Affiche statut station, si ouverte, affiche le nombre de vélos disponibles
+            if (this.statut == 'OPEN') {
 
                 //Affiche "Station ouverte"
-                document.getElementById('station_status').innerHTML = "<span class='p-2 text-success'><i class='fas fa-check'></i> Station ouverte </span>";
+                document.getElementById('station_statut').innerHTML = "<span class='p-2 text-success'><i class='fas fa-check'></i> Station ouverte </span>";
+
                 //Affiche le nombre de vélos disponibles
-                if (this.available_bikes > 0) {
+                if (this.available_bikes != 0) {
+                    //Affiche formulaire de réservation
+                    document.getElementById('booking').style.opacity = 1;
+
+                    //Indique le nombrede vélos disponibles
                     document.getElementById('station_available_bikes').innerHTML = "<span class=' text-success border border-success p-2 '><i class='fas fa-bicycle'></i> " + this.available_bikes + " Vélos disponibles</span>";
                 } else {
+                    //N'affiche plus le formulaire de réservation
+                    document.getElementById('booking').style.opacity = 0;
+
+                    //Aucun vélos disponibles
                     document.getElementById('station_available_bikes').innerHTML = "<span class='text-danger border border-danger p-2'><i class='fas fa-bicycle'></i>Pas de vélos disponibles ! </span>"
                 }
 
-                if (this.available_bike_stands > 0) {
+                if (this.available_bike_stands != 0) {
+
+                    //Affiche le nombre de stands de vélos disponibles
                     document.getElementById('station_available_bike_stands').innerHTML = "<span class=' text-success border border-success p-2'>" + this.available_bike_stands + " Places disponibles</span>";
                 } else {
+
+                    //Pas de place de vélos disponibles
                     document.getElementById('station_available_bike_stands').innerHTML = "<span class=' text-danger border border-danger p-2'>" + this.available_bike_stands + " Pas de places disponibles</span>";
                 }
-
             } else {
-                document.getElementById('station_status').innerHTML = "<span class='text-light bg-danger p-2'><i class='fas fa-times'></i> Station fermée </span>";
+                //Station fermée
+                document.getElementById('station_statut').innerHTML = "<span class='text-light bg-danger p-2'><i class='fas fa-times'></i> Fermée </span>";
             }
-            //Affiche si le payement pas carte est disponible
+
+            //Affiche si un terminal de payement est disponible ou non
             if (this.banking == true) {
                 document.getElementById('station_banking').innerHTML = "<small class='text-success d-flex align-items-center'><i class='fab fa-cc-mastercard mr-1'></i>Terminal payement disponible</small>";
             } else {
                 document.getElementById('station_banking').innerHTML = "<small class='text-danger d-flex align-items-center'><i class='fab fa-cc-mastercard mr-1'></i>Pas de terminal de payement</small>";
             }
-
-
 
         }, false)
     }
