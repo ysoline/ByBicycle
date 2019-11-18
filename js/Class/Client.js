@@ -15,5 +15,8 @@ class Client {
             console.log(this.name.value + ' ' + this.fn.value);
         })
     }
+    storeInfo() {
+        //Stockage d'information en cas de fermeture du navigateur
+    }
 
 }
