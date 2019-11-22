@@ -5,6 +5,10 @@ class Canvas {
         this.ctx = this.c.getContext('2d')
         this.ctx.fillStyle = "black"
         this.clear = document.getElementById('clear_canvas')
+        this.start = false
+        this.x = 0
+        this.y = 0
+
 
         this.clearCanvas()
         this.mouseUp()
@@ -12,8 +16,10 @@ class Canvas {
 
     }
     mouseDown() {
+
         this.c.addEventListener('mousedown', (e) => {
             this.ctx.beginPath()
+            this.ctx.moveTo(e.offsetX, e.offsetY)
             this.ctx.arc(e.offsetX, e.offsetY, 2, 0, Math.PI * 2)
             this.ctx.stroke()
             this.ctx.fillStyle
@@ -21,15 +27,16 @@ class Canvas {
         })
     }
 
-    // mouseMove() {
-    //     this.c.addEventListener('mousemove', (e) => {
-    //         this.ctx.beginPath()
-    //         this.ctx.arc(e.offsetX, e.offsetY, 2, 0, Math.PI * 2)
-    //         this.ctx.stroke()
-    //         this.ctx.fillStyle
-    //         this.ctx.fill()
-    //     })
-    // }
+    mouseMove() {
+        //     this.c.addEventListener('mousemove', (e) => {
+        //         this.ctx.beginPath()
+        //         this.ctx.arc(e.offsetX, e.offsetY, 2, 0, Math.PI * 2)
+        //         this.ctx.stroke()
+        //         this.ctx.fillStyle
+        //         this.ctx.fill()
+        //     })
+
+    }
 
     mouseUp() {
         this.c.addEventListener('mouseUp', (e) => {
@@ -40,7 +47,7 @@ class Canvas {
     clearCanvas() {
         this.clear.addEventListener('click', () => {
 
-            this.c.innerHTML = '' //fonctionne pas
+            this.ctx.clearRect(0, 0, this.c.width, this.c.height)
         })
     }
 
