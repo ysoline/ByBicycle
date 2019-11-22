@@ -14,7 +14,7 @@ class Canvas {
     draw() {
 
         this.c.addEventListener('mousedown', () => {
-            this.c.addEventListener('mousemove', (e) => {
+            let mousemove = this.c.addEventListener('mousemove', (e) => {
                 this.ctx.beginPath()
                 this.ctx.arc(e.offsetX, e.offsetY, 2, 0, Math.PI * 2)
                 this.ctx.stroke()
@@ -22,10 +22,16 @@ class Canvas {
                 this.ctx.fill()
             })
             this.c.addEventListener('mouseup', (e) => {
-
+                this.c.removeEventListener(('mousemove', mousemove), false)
             })
         })
+
     }
+    // mouseUp() {
+    //     this.c.addEventListener('mouseup', (e) => {
+    //         e
+    //     })
+    // }
 
 
     clearCanvas() {
