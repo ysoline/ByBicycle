@@ -56,18 +56,23 @@ class Markers {
             if (this.statut == 'OPEN') {
 
                 //Affiche "Station ouverte"
-                document.getElementById('station_statut').innerHTML = "<span class='p-2 text-success'><i class='fas fa-check'></i> Station ouverte </span>";
+                document.getElementById('station_statut').innerHTML = "<span class='p-2 text-light bg-success'><i class='fas fa-check'></i> Station ouverte </span>";
 
                 //Affiche le nombre de vélos disponibles
                 if (this.available_bikes != 0) {
                     //Affiche formulaire de réservation
                     document.getElementById('booking').style.opacity = 1;
+                    document.getElementById('station_available_bike_stands').style.opacity = 1;
+                    document.getElementById('station_available_bikes').style.opacity = 1;
 
                     //Indique le nombrede vélos disponibles
                     document.getElementById('station_available_bikes').innerHTML = "<span class=' text-success border border-success p-2 '><i class='fas fa-bicycle'></i> " + this.available_bikes + " Vélos disponibles</span>";
                 } else {
                     //N'affiche plus le formulaire de réservation
                     document.getElementById('booking').style.opacity = 0;
+                    document.getElementById('station_available_bike_stands').style.opacity = 1;
+                    document.getElementById('station_available_bikes').style.opacity = 1;
+                    document.getElementById('station_banking').style.opacity = 1;
 
                     //Aucun vélos disponibles
                     document.getElementById('station_available_bikes').innerHTML = "<span class='text-danger border border-danger p-2'><i class='fas fa-bicycle'></i>Pas de vélos disponibles ! </span>"
@@ -85,6 +90,10 @@ class Markers {
             } else {
                 //Station fermée
                 document.getElementById('station_statut').innerHTML = "<span class='text-light bg-danger p-2'><i class='fas fa-times'></i> Fermée </span>";
+                document.getElementById('booking').style.opacity = 0;
+                document.getElementById('station_banking').style.opacity = 0;
+                document.getElementById('station_available_bike_stands').style.opacity = 0;
+                document.getElementById('station_available_bikes').style.opacity = 0;
             }
 
             //Affiche si un terminal de payement est disponible ou non
