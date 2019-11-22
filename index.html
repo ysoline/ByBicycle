@@ -74,10 +74,13 @@
                     <input type="submit" value="Réserver" id='btn-booking' class='btn btn-success'>
                 </div>
             </form>
-            <!-- <canvas width="150" height="150" class="border" id="canvas"></canvas> -->
         </div>
     </div>
-
+    <div id='sign' class="m-4">
+        <div>Signature :</div>
+        <canvas width="150" height="150" id="canvas"></canvas>
+        <button id='clear_canvas' class='btn btn-primary'>Clear</button>
+    </div>
     <footer>
         <div class="blog-footer bg-primary text-center p-3 mt-2">
             <p class="text-light">Copyright © Julie Pilarski - 2019 - Tous droits réservés</p>
@@ -97,6 +100,7 @@
     <script src='js/Class/Markers.js'></script>
     <script src='js/Class/Map.js'></script>
     <script src='js/Class/Client.js'></script>
+    <script src='js/Class/Canvas.js'></script>
     <script src='js/Class/Bookings.js'></script>
     <script src='js/app.js'></script>
     <script>
