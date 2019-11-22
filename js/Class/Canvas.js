@@ -5,41 +5,28 @@ class Canvas {
         this.ctx = this.c.getContext('2d')
         this.ctx.fillStyle = "black"
         this.clear = document.getElementById('clear_canvas')
-        this.start = false
-        this.x = 0
-        this.y = 0
 
-
+        this.draw()
         this.clearCanvas()
-        this.mouseUp()
-        this.mouseDown()
+
 
     }
-    mouseDown() {
+    draw() {
 
-        this.c.addEventListener('mousedown', (e) => {
-            this.ctx.beginPath()
-            this.ctx.arc(e.offsetX, e.offsetY, 2, 0, Math.PI * 2)
-            this.ctx.stroke()
-            this.ctx.fillStyle
-            this.ctx.fill()
+        this.c.addEventListener('mousedown', () => {
+            this.c.addEventListener('mousemove', (e) => {
+                this.ctx.beginPath()
+                this.ctx.arc(e.offsetX, e.offsetY, 2, 0, Math.PI * 2)
+                this.ctx.stroke()
+                this.ctx.fillStyle
+                this.ctx.fill()
+            })
+            this.c.addEventListener('mouseup', (e) => {
+
+            })
         })
     }
 
-    mouseMove() {
-        //     this.c.addEventListener('mousemove', (e) => {
-        //         this.ctx.beginPath()
-        //         this.ctx.arc(e.offsetX, e.offsetY, 2, 0, Math.PI * 2)
-        //         this.ctx.stroke()
-        //         this.ctx.fillStyle
-        //         this.ctx.fill()
-        //     })
-
-    }
-
-    mouseUp() {
-        this.c.removeEventListener('mousedown', this.mouseDown())
-    }
 
     clearCanvas() {
         this.clear.addEventListener('click', () => {
