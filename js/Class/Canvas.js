@@ -5,8 +5,9 @@ class Canvas {
         this.ctx = this.c.getContext('2d')
         this.ctx.fillStyle = "black"
         this.clear = document.getElementById('clear_canvas')
-
+        this.mouseUp()
         this.mouseDown()
+
         // this.draw()
         this.clearCanvas()
 
@@ -33,8 +34,8 @@ class Canvas {
     // }
     mouseDown() {
         this.c.addEventListener('mousedown', () => {
+
             this.mouseMove()
-            this.mouseUp()
         })
 
     }
@@ -45,12 +46,14 @@ class Canvas {
             this.ctx.stroke()
             this.ctx.fillStyle
             this.ctx.fill()
+
         })
 
     }
     mouseUp() {
         this.c.addEventListener('mouseup', (e) => {
-            e.stopPropagation()
+            // e.stopPropagation()
+
         })
     }
     clearCanvas() {
