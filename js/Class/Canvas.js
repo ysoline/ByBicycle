@@ -19,7 +19,6 @@ class Canvas {
 
         this.c.addEventListener('mousedown', (e) => {
             this.ctx.beginPath()
-            this.ctx.moveTo(e.offsetX, e.offsetY)
             this.ctx.arc(e.offsetX, e.offsetY, 2, 0, Math.PI * 2)
             this.ctx.stroke()
             this.ctx.fillStyle
@@ -39,9 +38,7 @@ class Canvas {
     }
 
     mouseUp() {
-        this.c.addEventListener('mouseUp', (e) => {
-            e.stopPropagation()
-        })
+        this.c.removeEventListener('mousedown', this.mouseDown())
     }
 
     clearCanvas() {
