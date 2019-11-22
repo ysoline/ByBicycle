@@ -6,34 +6,53 @@ class Canvas {
         this.ctx.fillStyle = "black"
         this.clear = document.getElementById('clear_canvas')
 
-        this.draw()
+        this.mouseDown()
+        // this.draw()
         this.clearCanvas()
 
 
     }
-    draw() {
+    // draw() {
 
+    //     this.c.addEventListener('mousedown', (e) => {
+    //         this.c.addEventListener('mousemove', (e) => {
+    //             this.ctx.beginPath()
+    //             this.ctx.arc(e.offsetX, e.offsetY, 2, 0, Math.PI * 2)
+    //             this.ctx.stroke()
+    //             this.ctx.fillStyle
+    //             this.ctx.fill()
+    //         })
+    //         e.stopPropagation()
+    //         // this.c.addEventListener('mouseup', () => {
+    //         //     this.c.removeEventListener('mousemove', (e) => {
+    //         //         e.stopPropagation()
+    //         //     })
+    //         // })
+    //     })
+
+    // }
+    mouseDown() {
         this.c.addEventListener('mousedown', () => {
-            let mousemove = this.c.addEventListener('mousemove', (e) => {
-                this.ctx.beginPath()
-                this.ctx.arc(e.offsetX, e.offsetY, 2, 0, Math.PI * 2)
-                this.ctx.stroke()
-                this.ctx.fillStyle
-                this.ctx.fill()
-            })
-            this.c.addEventListener('mouseup', (e) => {
-                this.c.removeEventListener(('mousemove', mousemove), false)
-            })
+            this.mouseMove()
+            this.mouseUp()
         })
 
     }
-    // mouseUp() {
-    //     this.c.addEventListener('mouseup', (e) => {
-    //         e
-    //     })
-    // }
+    mouseMove() {
+        this.c.addEventListener('mousemove', (e) => {
+            this.ctx.beginPath()
+            this.ctx.arc(e.offsetX, e.offsetY, 2, 0, Math.PI * 2)
+            this.ctx.stroke()
+            this.ctx.fillStyle
+            this.ctx.fill()
+        })
 
-
+    }
+    mouseUp() {
+        this.c.addEventListener('mouseup', (e) => {
+            e.stopPropagation()
+        })
+    }
     clearCanvas() {
         this.clear.addEventListener('click', () => {
 
