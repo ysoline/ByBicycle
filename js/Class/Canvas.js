@@ -5,57 +5,30 @@ class Canvas {
         this.ctx = this.c.getContext('2d')
         this.ctx.fillStyle = "black"
         this.clear = document.getElementById('clear_canvas')
-        this.mouseUp()
-        this.mouseDown()
+        this.drawMouse()
 
-        // this.draw()
         this.clearCanvas()
-
-
     }
-    // draw() {
 
-    //     this.c.addEventListener('mousedown', (e) => {
-    //         this.c.addEventListener('mousemove', (e) => {
-    //             this.ctx.beginPath()
-    //             this.ctx.arc(e.offsetX, e.offsetY, 2, 0, Math.PI * 2)
-    //             this.ctx.stroke()
-    //             this.ctx.fillStyle
-    //             this.ctx.fill()
-    //         })
-    //         e.stopPropagation()
-    //         // this.c.addEventListener('mouseup', () => {
-    //         //     this.c.removeEventListener('mousemove', (e) => {
-    //         //         e.stopPropagation()
-    //         //     })
-    //         // })
-    //     })
 
-    // }
-    mouseDown() {
-        this.c.addEventListener('mousedown', () => {
-
-            this.mouseMove()
-        })
-
-    }
-    mouseMove() {
+    drawMouse() {
         this.c.addEventListener('mousemove', (e) => {
-            this.ctx.beginPath()
-            this.ctx.arc(e.offsetX, e.offsetY, 2, 0, Math.PI * 2)
-            this.ctx.stroke()
-            this.ctx.fillStyle
-            this.ctx.fill()
-
+            if (e.buttons === 1) {
+                this.ctx.beginPath()
+                this.ctx.arc(e.offsetX, e.offsetY, 1, 0, Math.PI * 2)
+                this.ctx.stroke()
+                this.ctx.fillStyle
+                this.ctx.fill()
+            }
         })
-
+        // this.c.addEventListener('mouseup', (e) => {
+        //     if (e.buttons === 0) {
+        //         e.stopPropagation()
+        //     }
+        // })
     }
-    mouseUp() {
-        this.c.addEventListener('mouseup', (e) => {
-            // e.stopPropagation()
 
-        })
-    }
+
     clearCanvas() {
         this.clear.addEventListener('click', () => {
 
