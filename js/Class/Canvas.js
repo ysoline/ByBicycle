@@ -6,28 +6,40 @@ class Canvas {
         this.ctx.fillStyle = "black"
         this.clear = document.getElementById('clear_canvas')
 
-        this.drawMouse()
-
-
+        this.sign()
         this.clearCanvas()
     }
 
 
 
-    drawMouse() {
+    sign() {
         this.c.addEventListener('mousemove', (e) => {
             if (e.buttons === 1) {
-                this.position(e)
+                this.mousePosition(e)
+                this.draw()
+            }
+        })
+
+        this.c.addEventListener('touchmove', (e) => {
+            if (e.toucheStart === 1) {
+                this.fingerPosition(e)
                 this.draw()
             }
         })
 
     }
-    position(e) {
+    mousePosition(e) {
 
         this.x = e.offsetX
         this.y = e.offsetY
     }
+    fingerPosition(e) {
+        this.x = e.touches[0].offsetX
+        this.y = e.touches[0].offsetY
+
+    }
+
+
     draw() {
         this.ctx.beginPath()
         this.ctx.arc(this.x, this.y, 1, 0, Math.PI * 2)
@@ -42,6 +54,10 @@ class Canvas {
             e.preventDefault()
             this.ctx.clearRect(0, 0, this.c.width, this.c.height)
         })
+    }
+
+    saveCanvas() {
+
     }
 
 }
