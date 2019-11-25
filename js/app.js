@@ -3,8 +3,7 @@ class App {
     constructor() {
         this.newMap = new Map(47.21837, -1.55624, mapid);
         this.getAjax(this.newMap);
-        this.getClient();
-        this.drawCanvas();
+        this.getBooking();
     }
     getAjax(newMap) {
         ajaxGet('https://api.jcdecaux.com/vls/v1/stations?contract=nantes&apiKey=a0ce65c3665035a0a4c7ef02805b70e171c87636',
@@ -17,12 +16,20 @@ class App {
             }
         );
     }
-    getClient() {
-        let client = new Client();
-    }
-    drawCanvas() {
-        let sign = new Canvas();
-    }
+    getBooking() {
+
+        let showForm = document.getElementById('showBooking');
+
+        showForm.addEventListener('click', () => {
+
+            showForm.style.display = 'none'
+            document.getElementById('booking').style.display = "block"
 
 
+            let client = new Client();
+            let signature = new Canvas();
+
+        })
+
+    }
 }

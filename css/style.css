@@ -59,13 +59,14 @@
 .fa-cc-mastercard{
   font-size: 2em ;
 }
-#booking{
-  opacity :0;
-}
 
 #station_address{
   height: 55px !important;
 }
 #station_name {
   height:  30px !important;
+}
+
+#booking{
+  display: none;  
 }

@@ -12,7 +12,14 @@ class Client {
 
             e.preventDefault();
 
-            console.log(this.name.value + ' ' + this.fn.value);
+            if (!!this.name.value && !!this.fn.value) {
+                console.log(this.name.value + ' ' + this.fn.value);
+                return true
+            } else {
+                console.log('veuillez renseigner tous les champs')
+                return false
+            }
+
         })
     }
     storeInfo() {

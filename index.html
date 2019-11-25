@@ -37,11 +37,13 @@
 
     <div class="row d-flex justify-content-around">
         <div id="mapid" class='my-4'></div>
-        <div id="bloc_station" class='m-4 d-flex flex-column align-items-center justify-content-center'>
-            <h5 class='mb-4 font-weight-bold' id="info_station">Détail de la
-                Station</i></h5>
 
-            <div class="info d-flex flex-column align-items-center">
+        <div id="bloc_station" class='m-4 d-flex flex-column align-items-center'>
+
+            <h5 class=' my-4 font-weight-bold' id="info_station">Détail de la
+                Station</h5>
+
+            <div class="info d-flex flex-column align-items-center" id="bloc_info">
 
                 <p id='station_statut' class="status mt-1"></p>
 
@@ -61,26 +63,34 @@
                 </div>
 
                 <p id='station_banking' class="ml-2"></p>
+
             </div>
+            <button class='btn btn-success' id='showBooking'>Effectuer une réservation</button>
+
             <form class="p-2" id="booking">
-                <label>Réserver :</label>
+                <h5 class=' my-4 font-weight-bold' id="info_station">Réservation</h5>
                 <div class="form-group">
                     <input type="text" placeholder="Nom" name="name" id="name" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <input type="text" placeholder="Prénom" name="fn" id="fn" class="form-control" required>
                 </div>
+                <div id='sign' class="m-4 d-flex flex-column align-items-center">
+                    <div>Signature :</div>
+                    <canvas width="150" height="150" id="canvas"></canvas>
+                    <button id='clear_canvas' class='btn btn-primary mt-2'>Clear</button>
+                </div>
                 <div class="form-group d-flex justify-content-center">
                     <input type="submit" value="Réserver" id='btn-booking' class='btn btn-success'>
                 </div>
+
             </form>
         </div>
     </div>
-    <div id='sign' class="m-4">
-        <div>Signature :</div>
-        <canvas width="150" height="150" id="canvas"></canvas>
-        <button id='clear_canvas' class='btn btn-primary'>Clear</button>
-    </div>
+
+
+
+
     <footer>
         <div class="blog-footer bg-primary text-center p-3 mt-2">
             <p class="text-light">Copyright © Julie Pilarski - 2019 - Tous droits réservés</p>
@@ -95,14 +105,14 @@
         integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
         crossorigin=""></script>
 
+    <script src='js/app.js'></script>
     <script src='js/Class/Slider.js'></script>
     <script src='js/Class/AjaxGet.js'></script>
+    <script src='js/Class/Bookings.js'></script>
     <script src='js/Class/Markers.js'></script>
     <script src='js/Class/Map.js'></script>
     <script src='js/Class/Client.js'></script>
     <script src='js/Class/Canvas.js'></script>
-    <script src='js/Class/Bookings.js'></script>
-    <script src='js/app.js'></script>
     <script>
         let newApp = new App();
     </script>
