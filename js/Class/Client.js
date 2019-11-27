@@ -4,6 +4,7 @@ class Client {
         this.name = document.getElementById('name');
         this.fn = document.getElementById('fn');
         this.info();
+        this.checkStorage()
 
     }
 
@@ -22,8 +23,9 @@ class Client {
 
         })
     }
-    storeInfo() {
-        //Stockage d'information en cas de fermeture du navigateur
-    }
+
+
+
+
 
 }

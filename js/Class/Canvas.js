@@ -57,7 +57,14 @@ class Canvas {
     }
 
     saveCanvas() {
-
+        //Méthode permettant de sauvegarder le canva sous forme d'image afin de pouvoir l'exploiter ensuite.
     }
 
 }
+
+//position: récupération des coordonnées de la souris
+//Draw : methode regroupant les paramètres pour dessiner (arc,stroke...)
+//MouseDown : si souris enfoucé (detectée), appel de la méthode mouseMove + draw + position
+//MouseUp + Out: return false (ou 0) pour draw, ne dessine plus quand clique relacher ou sortie de la fenétre
+//ClearCanva : réinitialise le canva, pour effacement
+//Tablette/Phone : toucheStart, touchMove, touchEnd(?) => même principe que mouse

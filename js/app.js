@@ -18,6 +18,11 @@ class App {
     }
     getBooking() {
 
+        //Appel de la méthode pour vérifié si un objet storage existe déjà
+        //let objectStorage = new Client();
+        //objectStorage.checkStorage();
+
+
         let showForm = document.getElementById('showBooking');
 
         showForm.addEventListener('click', () => {
