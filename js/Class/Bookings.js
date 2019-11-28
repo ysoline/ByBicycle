@@ -10,7 +10,7 @@ class Bookings {
         //décompte 20min et expiration
     }
     viewTimer() {
-        //affichage sous carte du minuteur (coloration lorsqu'il reste moins de 5min)
+        //affichage sous carte du minuteur (coloration lorsqu'il reste moins de 5min ?)
     }
 
     //Utilisation de localStorage (sauvegarde de donées même lors de la fermeture du navigateur)
