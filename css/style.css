@@ -96,3 +96,21 @@
   color: white;
   padding: 10px;
 }
+
+.available_bike {
+  color: #2abe04;
+  padding: 10px;
+  border: 1px solid #2abe04;
+}
+
+.available_bike_stand {
+  color: #2abe04;
+  padding: 10px;
+  border: 1px solid #2abe04;
+}
+
+.no_available_stand {
+  color: red;
+  padding: 10px;
+  border: 1px solid red;
+}

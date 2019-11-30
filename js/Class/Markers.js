@@ -86,10 +86,10 @@ class Markers {
                 if (this.available_bike_stands != 0) {
 
                     //Affiche le nombre de stands de vélos disponibles
-                    document.getElementById('station_available_bike_stands').innerHTML = this.available_bike_stands
+                    document.getElementById('station_available_bike_stands').innerHTML = this.available_bike_stands + ' Places disponibles'
                 } else {
                     //Pas de place de vélos disponibles
-                    document.getElementById('station_available_bike_stands').innerHTML = "<span class=' text-danger border border-danger p-2'>" + this.available_bike_stands + " Pas de places disponibles</span>";
+                    document.getElementById('station_available_bike_stands').innerHTML = "<span class='no_available_stand'>" + this.available_bike_stands + " Pas de places disponibles</span>";
                 }
             } else {
                 //Station fermée

@@ -45,21 +45,21 @@ class Bookings {
 
   checkStorage() {
     //Méthode pour vérifier si objet de stockage existent ou non
-    if (localStorage.getItem("timer")) {
+    if (sessionStorage.getItem("timer")) {
       this.updateInfo()
     } else {
       this.setInfo()
     }
   }
   updateInfo() {
-    localStorage.get('timer')
+    sessionStorage.get('timer')
 
   }
   setInfo() {
-    localStorage.setItem('timer', this.nb)
+    sessionStorage.setItem('timer', this.nb)
     console.log(this.s + " SAUVEGARDE")
   }
   clearStorage() {
-    localStorage.clear()
+    sessionStorage.clear()
   }
 }
