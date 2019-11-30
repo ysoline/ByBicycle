@@ -2,120 +2,130 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
-    <title>ByBicycle</title>
-    <link rel="icon" href="img/logo/favicon.png" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-        crossorigin="" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" />
+  <title>ByBicycle</title>
+  <link rel="icon" href="img/logo/favicon.png" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#"><img src="img/logo/bybicycle_b.png" alt="logo bybicycle" id="logo"></a>
-        <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Location de vélo de la ville de Nantes <span
-                            class="sr-only"></span></a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <section id="slider">
-        <img id='diapo' alt="slider">
-        <div class='control'>
-            <a id='prevBtn'><i class="fas fa-chevron-left"></i></a>
-            <a id='pauseBtn'><i class="fas fa-pause"></i></a>
-            <a id='nextBtn'><i class="fas fa-chevron-right"></i></a>
-        </div>
-    </section>
-
-    <div class="row d-flex justify-content-around">
-        <div id="mapid" class='my-4'></div>
-
-        <div id="bloc_station" class='m-4 d-flex flex-column align-items-center'>
-
-            <h5 class=' my-4 font-weight-bold' id="info_station">Détail de la
-                Station</h5>
-
-            <div class="info d-flex flex-column align-items-center" id="bloc_info">
-
-                <p id='station_statut' class="status mt-1"></p>
-
-                <label for="station_name" class='font-weight-bold text-primary'>Nom de la station :</label>
-                <p id='station_name' class="text-danger"></p>
-
-                <label for="station_address" class='font-weight-bold text-primary'>Adresse de la station
-                    :</label>
-                <p id='station_address' class="text-danger text-center"></p>
-
-                <div class='d-flex'>
-                    <p id='station_available_bikes'></p>
-                </div>
-
-                <div class='d-flex mt-1'>
-                    <p id='station_available_bike_stands'></p>
-                </div>
-
-                <p id='station_banking' class="ml-2"></p>
-
-            </div>
-            <button class='btn btn-success' id='showBooking'>Effectuer une réservation</button>
-
-            <form class="p-2" id="booking">
-                <h5 class=' my-4 font-weight-bold' id="info_station">Réservation</h5>
-                <div class="form-group">
-                    <input type="text" placeholder="Nom" name="name" id="name" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" placeholder="Prénom" name="fn" id="fn" class="form-control" required>
-                </div>
-                <div id='sign' class="m-4 d-flex flex-column align-items-center">
-                    <div>Signature :</div>
-                    <canvas width="220" height="150" id="canvas"></canvas>
-                    <button id='clear_canvas' class='btn btn-primary mt-2'>Clear</button>
-                </div>
-                <div class="form-group d-flex justify-content-center">
-                    <input type="submit" value="Réserver" id='btn-booking' class='btn btn-success'>
-                </div>
-
-            </form>
-        </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#"><img src="img/logo/bybicycle_b.png" alt="logo bybicycle" id="logo" /></a>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Location de vélo de la ville de Nantes
+            <span class="sr-only"></span></a>
+        </li>
+      </ul>
     </div>
+  </nav>
 
+  <section id="slider">
+    <img id="diapo" alt="slider" />
+    <div class="control">
+      <a id="prevBtn"><i class="fas fa-chevron-left"></i></a>
+      <a id="pauseBtn"><i class="fas fa-pause"></i></a>
+      <a id="nextBtn"><i class="fas fa-chevron-right"></i></a>
+    </div>
+  </section>
 
+  <div class="row d-flex justify-content-around">
+    <div id="mapid" class="my-4"></div>
 
+    <div id="bloc_station" class="m-4 d-flex flex-column align-items-center">
+      <h5 class=" my-4 font-weight-bold" id="info_station">
+        Détail de la Station
+      </h5>
 
-    <footer>
-        <div class="blog-footer bg-primary text-center p-3 mt-2">
-            <p class="text-light">Copyright © Julie Pilarski - 2019 - Tous droits réservés</p>
-            <small class="text-light">Projet 3 - Formation Développeur Web Junior</small><br />
-            <a><small class="text-light">Mentions Légales </small></a><br />
+      <div class="info d-flex flex-column align-items-center" id="bloc_info">
+        <p class="status mt-1" id="station_statut"></p>
+
+        <label for="station_name" class="font-weight-bold text-primary">Nom de la station :</label>
+        <p class="text-danger"><span id="station_name"></span></p>
+
+        <label for="station_address" class="font-weight-bold text-primary">Adresse de la station :</label>
+        <p class="text-danger text-center"><span id="station_address"></span></p>
+
+        <div class="d-flex">
+          <p id="station_available_bikes" class=' text-success border border-success p-2 '>
+            <i class='fas fa-bicycle'></i> <span id="nb_bike"></span> Vélos disponibles
+          </p>
         </div>
-    </footer>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-        crossorigin=""></script>
+        <div class="d-flex mt-1">
+          <p class='text-success border border-success p-2 d-flex'><span id="station_available_bike_stands"
+              class='mr-1'></span>
+            Places disponibles</p>
+        </div>
 
-    <script src='js/app.js'></script>
-    <script src='js/Class/Slider.js'></script>
-    <script src='js/Class/AjaxGet.js'></script>
-    <script src='js/Class/Bookings.js'></script>
-    <script src='js/Class/Markers.js'></script>
-    <script src='js/Class/Map.js'></script>
-    <script src='js/Class/Client.js'></script>
-    <script src='js/Class/Canvas.js'></script>
-    <script>
-        let newApp = new App();
-    </script>
+        <p id="station_banking" class="ml-2"></p>
+      </div>
+      <button class="btn btn-success" id="showBooking">
+        Effectuer une réservation
+      </button>
+
+      <form class="p-2" id="booking">
+        <h5 class=" my-4 font-weight-bold" id="info_station">Réservation</h5>
+        <div class="form-group">
+          <input type="text" placeholder="Nom" name="name" id="name" class="form-control" required />
+        </div>
+        <div class="form-group">
+          <input type="text" placeholder="Prénom" name="fn" id="fn" class="form-control" required />
+        </div>
+        <div id="sign" class="m-4 d-flex flex-column align-items-center">
+          <div>Signature :</div>
+          <canvas width="195" height="150" id="canvas"></canvas>
+          <button id="clear_canvas" class="btn btn-primary mt-2">
+            Clear
+          </button>
+        </div>
+        <div class="form-group d-flex justify-content-center">
+          <input type="submit" value="Réserver" id="btn-booking" class="btn btn-success" />
+        </div>
+        <button id="goTimer" class="btn btn-danger">Lancer timer</button>
+      </form>
+    </div>
+  </div>
+
+  <div id='current_booking'>
+    <h5>Votre réservation :</h5>
+    <div class="d-flex flex-column align-item-center justify-content-center" id="content_booking">
+      Nom de la station :
+      <p id='booking_name'></p>
+      Addresse de la station :
+      <p id='booking_addr'></p>
+      <p id="timer" class="font-weight-bold text-center"></p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="blog-footer bg-primary text-center p-3 mt-2">
+      <p class="text-light">
+        Copyright © Julie Pilarski - 2019 - Tous droits réservés
+      </p>
+      <small class="text-light">Projet 3 - Formation Développeur Web Junior</small><br />
+      <a><small class="text-light">Mentions Légales </small></a><br />
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+
+  <script src="js/main.js"></script>
+  <script src="js/Class/Slider.js"></script>
+  <script src="js/Class/AjaxGet.js"></script>
+  <script src="js/Class/Bookings.js"></script>
+  <script src="js/Class/Markers.js"></script>
+  <script src="js/Class/Map.js"></script>
+  <script src="js/Class/Client.js"></script>
+  <script src="js/Class/Canvas.js"></script>
+  <script>
+    let newApp = new App();
+  </script>
 </body>
 
 </html>

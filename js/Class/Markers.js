@@ -34,14 +34,17 @@ class Markers {
             this.Lmarker = L.marker([
                 this.lat,
                 this.lng,
-            ], { icon: this.iconBlue }).addTo(map.mapDesc);
+            ], {
+                icon: this.iconBlue
+            }).addTo(map.mapDesc);
 
-        }
-        else {
+        } else {
             this.Lmarker = L.marker([
                 this.lat,
                 this.lng,
-            ], { icon: this.iconRed }).addTo(map.mapDesc);
+            ], {
+                icon: this.iconRed
+            }).addTo(map.mapDesc);
         }
 
         //Ecoute d'évenement marker
@@ -58,7 +61,7 @@ class Markers {
             if (this.statut == 'OPEN') {
 
                 //Affiche "Station ouverte"
-                document.getElementById('station_statut').innerHTML = "<span class='p-2 text-light bg-success'><i class='fas fa-check'></i> Station ouverte </span>";
+                document.getElementById('station_statut').innerHTML = "<span class='open'><i class='fas fa-check'></i> Station ouverte</span>";
 
                 //Affiche le nombre de vélos disponibles
                 if (this.available_bikes != 0) {
@@ -68,7 +71,7 @@ class Markers {
                     document.getElementById('station_available_bikes').style.display = 'block';
 
                     //Indique le nombrede vélos disponibles
-                    document.getElementById('station_available_bikes').innerHTML = "<span class=' text-success border border-success p-2 '><i class='fas fa-bicycle'></i> " + this.available_bikes + " Vélos disponibles</span>";
+                    document.getElementById('nb_bike').innerHTML = this.available_bikes;
                 } else {
                     //N'affiche plus le formulaire de réservation
                     document.getElementById('showBooking').style.display = "none";
@@ -83,20 +86,19 @@ class Markers {
                 if (this.available_bike_stands != 0) {
 
                     //Affiche le nombre de stands de vélos disponibles
-                    document.getElementById('station_available_bike_stands').innerHTML = "<span class=' text-success border border-success p-2'>" + this.available_bike_stands + " Places disponibles</span>";
+                    document.getElementById('station_available_bike_stands').innerHTML = this.available_bike_stands
                 } else {
-
                     //Pas de place de vélos disponibles
                     document.getElementById('station_available_bike_stands').innerHTML = "<span class=' text-danger border border-danger p-2'>" + this.available_bike_stands + " Pas de places disponibles</span>";
                 }
             } else {
                 //Station fermée
-                document.getElementById('station_statut').innerHTML = "<span class='text-light bg-danger p-2'><i class='fas fa-times'></i> Fermée </span>";
+                // document.getElementById('station_statut').innerHTML = "<span class='text-light bg-danger p-2'><i class='fas fa-times'></i> Fermée </span>";
+                document.getElementById('station_statut').innerHTML = "<span class='closed'><i class='fas fa-times'></i> Fermée </span>";
                 document.getElementById('showBooking').style.display = "none";
                 document.getElementById('station_banking').style.display = "none";
                 document.getElementById('station_available_bike_stands').style.display = "none";
-                document.getElementById('station_available_bikes').style.display = "none";
-                ;
+                document.getElementById('station_available_bikes').style.display = "none";;
             }
 
             //Affiche si un terminal de payement est disponible ou non

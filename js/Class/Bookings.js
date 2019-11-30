@@ -1,57 +1,65 @@
+//Sauvegarde les infos pour la réservation
+//Les infos sauvargés sont : le timer, le nom de la station où est effectué la réservation
+
 class Bookings {
-    constructor() {
-        this.timer = 0;
-    }
+  constructor(nb) {
+    this.timerView = document.getElementById("timer")
+    this.contentBooking = document.getElementById('content_booking')
+    this.min = nb
+    this.sec = nb * 60
+    this.min = 0
+    this.remainingSec = 0
+    this.stopTimer()
+    this.detectBooking()
+  }
 
-    detectBooking() {
-        //activation quand le client "signe" la réservation
-    }
-    timer() {
-        //décompte 20min et expiration
-    }
-    viewTimer() {
-        //affichage sous carte du minuteur (coloration lorsqu'il reste moins de 5min ?)
-    }
+  detectBooking() {
+    //s'active quand le client "signe" la réservation  
+    this.timerView.innerHTML = 'Expiration de la réservation dans ' + this.min + ':' + this.remainingSec
+    this.interval = setInterval(this.startTimer.bind(this), 1000) //S'execute toutes les secondes
+  }
 
-    //Utilisation de localStorage (sauvegarde de donées même lors de la fermeture du navigateur)
-    //Faire une condition pour savoir si un objet de stockage est déjà créé ou non
-    //Si une valeur est trouvé c'est que l'objet de stockage existe donc appel de la méthode pour mettre à jour
-    //Si aucune valeur n'est trouvé par getItem(), aucun objet de stockage existant
-    //Il faut donc créer l'objet
+  startTimer() { //Décrémentation
 
-    //if(localStorage.getItem(clé)){
-    //méthode pour mettre à jour les infos avec les dernières valeurs de l'objet de stockage
+    this.min = Math.round((this.sec - 30) / 60)
+    this.remainingSec = this.sec % 60
 
-    // }else{ 
-    //méthode pour créer l'objet de stockage
-    //+ méthode pour mettre à jour
-    // }
-    updateInfo() {
-        //méthode de mise à jour info
-        localStorage.setItem('clé', 'valeur');
-        //localStorage.setItem(clé,valeur)
-        //clé : généralement un id
-        //valeur : valeur dans le formulaire
+    if (this.remainingSec < 10) {
+      this.remainingSec = '0' + this.remainingSec
     }
-    setInfo() {
-        //Méthode de création objet
-        //updateInfo
-    }
-    checkStorage() { //Méthode pour vérifier si objet de stockage existent ou non
-        if (localStorage.getItem('clé')) {
-            this.updateInfo()
-        } else {
-            this.setInfo()
-            this.updateInfo()
-        }
-    }
+    this.timerView.innerHTML = 'Expiration de la réservation dans ' + this.min + ':' + this.remainingSec
 
-    clearStorage() {//Méthode permettant de supprimer tous les objets de storage
-        clear()
+    if (this.sec == 0) {
+      this.stopTimer()
+      this.contentBooking.innerHTML = '<span class="booking_over">Réservation expirée</span>'
+    } else {
+      this.sec--
     }
-    takeBike() {
-        //Indique le nombre de vélo -1 à la station où la réservation a été effectuée
-        //Rappel des informations de station : Nom, adresse
-    }
+  }
 
+  stopTimer() { //Stop le timer 
+
+    clearInterval(this.interval)
+    this.clearStorage()
+  }
+
+  checkStorage() {
+    //Méthode pour vérifier si objet de stockage existent ou non
+    if (localStorage.getItem("timer")) {
+      this.updateInfo()
+    } else {
+      this.setInfo()
+    }
+  }
+  updateInfo() {
+    localStorage.get('timer')
+
+  }
+  setInfo() {
+    localStorage.setItem('timer', this.nb)
+    console.log(this.s + " SAUVEGARDE")
+  }
+  clearStorage() {
+    localStorage.clear()
+  }
 }

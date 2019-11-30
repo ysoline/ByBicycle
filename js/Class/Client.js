@@ -4,8 +4,6 @@ class Client {
         this.name = document.getElementById('name');
         this.fn = document.getElementById('fn');
         this.info();
-        this.checkStorage()
-
     }
 
     info() {

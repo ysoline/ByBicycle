@@ -5,7 +5,6 @@ class Canvas {
         this.ctx = this.c.getContext('2d')
         this.ctx.fillStyle = "black"
         this.clear = document.getElementById('clear_canvas')
-
         this.sign()
         this.clearCanvas()
     }
@@ -26,13 +25,14 @@ class Canvas {
                 this.draw()
             }
         })
-
     }
+
     mousePosition(e) {
 
         this.x = e.offsetX
         this.y = e.offsetY
     }
+
     fingerPosition(e) {
         this.x = e.touches[0].offsetX
         this.y = e.touches[0].offsetY
