@@ -71,7 +71,7 @@ class Markers {
                     document.getElementById('station_available_bikes').style.display = 'block';
 
                     //Indique le nombrede vélos disponibles
-                    document.getElementById('nb_bike').innerHTML = this.available_bikes;
+                    document.getElementById('station_available_bikes').innerHTML = '<span class="available_bikes">Vélos disponibles : <span id="nb_bike">' + this.available_bikes + '</span></span>';
                 } else {
                     //N'affiche plus le formulaire de réservation
                     document.getElementById('showBooking').style.display = "none";
@@ -80,7 +80,7 @@ class Markers {
                     document.getElementById('station_banking').style.display = 'block';
 
                     //Aucun vélos disponibles
-                    document.getElementById('station_available_bikes').innerHTML = "<span class='text-danger border border-danger p-2'><i class='fas fa-bicycle'></i>Pas de vélos disponibles ! </span>"
+                    document.getElementById('station_available_bikes').innerHTML = "<span class='no_bike'>Pas de vélos disponibles ! </span>"
                 }
 
                 if (this.available_bike_stands != 0) {

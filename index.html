@@ -35,7 +35,9 @@
   <div class="row d-flex justify-content-around">
     <div id="mapid" class="my-4"></div>
 
+
     <div id="bloc_station" class="m-4 d-flex flex-column align-items-center">
+
       <h5 class=" my-4 font-weight-bold" id="info_station">
         Détail de la Station
       </h5>
@@ -50,8 +52,7 @@
         <p class="text-danger text-center"><span id="station_address"></span></p>
 
         <div class="d-flex">
-          <p id="station_available_bikes" class='available_bike'>
-            <i class='fas fa-bicycle'></i> <span id="nb_bike"></span> Vélos disponibles
+          <p id="station_available_bikes">
           </p>
         </div>
 
@@ -59,26 +60,27 @@
           <p class='d-flex available_bike_stand' id="station_available_bike_stands">
           </p>
         </div>
-
-        <p id="station_banking" class="ml-2"></p>
       </div>
+
+      <p id="station_banking" class="ml-2"></p>
+
       <button class="btn btn-success" id="showBooking">
         Effectuer une réservation
       </button>
 
-      <form class="p-2" id="booking">
+      <form id="booking">
         <h5 class=" my-4 font-weight-bold" id="info_station">Réservation</h5>
         <div class="form-group">
-          <input type="text" placeholder="Nom" name="name" id="name" class="form-control" required />
+          <input type="text" placeholder="Nom" name="name" id="name" class="form-control" />
         </div>
         <div class="form-group">
-          <input type="text" placeholder="Prénom" name="fn" id="fn" class="form-control" required />
+          <input type="text" placeholder="Prénom" name="fn" id="fn" class="form-control" />
         </div>
         <div id="sign" class="m-4 d-flex flex-column align-items-center">
           <div>Signature :</div>
           <canvas width="195" height="150" id="canvas"></canvas>
-          <button id="clear_canvas" class="btn btn-primary mt-2">
-            Clear
+          <button id="clear_canvas" class="btn btn-primary small-btn mt-2">
+            Effacer signature
           </button>
         </div>
         <div class="form-group d-flex justify-content-center">

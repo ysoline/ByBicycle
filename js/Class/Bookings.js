@@ -55,7 +55,7 @@ class Bookings {
     sessionStorage.get('timer')
 
   }
-  setInfo() {
+  saveInfo() {
     sessionStorage.setItem('timer', this.nb)
     console.log(this.s + " SAUVEGARDE")
   }

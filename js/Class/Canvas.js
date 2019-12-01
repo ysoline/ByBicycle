@@ -1,12 +1,13 @@
 class Canvas {
     constructor() {
         this.c = document.getElementById('canvas')
-        this.c.style.border = "1px solid black"
         this.ctx = this.c.getContext('2d')
         this.ctx.fillStyle = "black"
         this.clear = document.getElementById('clear_canvas')
+        this.dataUrl = null
         this.sign()
         this.clearCanvas()
+        this.ctx.save() //Sauvegarde l'état du canvas
     }
 
 
@@ -16,6 +17,7 @@ class Canvas {
             if (e.buttons === 1) {
                 this.mousePosition(e)
                 this.draw()
+                this.saveCanvas()
             }
         })
 
@@ -54,10 +56,6 @@ class Canvas {
             e.preventDefault()
             this.ctx.clearRect(0, 0, this.c.width, this.c.height)
         })
-    }
-
-    saveCanvas() {
-        //Méthode permettant de sauvegarder le canva sous forme d'image afin de pouvoir l'exploiter ensuite.
     }
 
 }
