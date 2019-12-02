@@ -4,7 +4,7 @@ class Canvas {
         this.ctx = this.c.getContext('2d')
         this.ctx.fillStyle = "black"
         this.clear = document.getElementById('clear_canvas')
-        this.sign()
+        this.mouseSign()
         this.clearCanvas()
         this.ctx.save() //Sauvegarde l'état du canvas
         this.isEmpty = true
@@ -12,15 +12,19 @@ class Canvas {
 
 
     //Action de signer le canvas, souris ou doigt
-    sign() {
+    mouseSign(e) {
         this.c.addEventListener('mousemove', (e) => {
+
             if (e.buttons === 1) {
                 this.mousePosition(e)
                 this.draw()
                 this.isEmpty = false
             }
-        })
+        }, false)
 
+    }
+
+    fingerSign() {
         this.c.addEventListener('touchmove', (e) => {
             if (e.toucheStart === 1) {
                 this.fingerPosition(e)
@@ -55,21 +59,14 @@ class Canvas {
 
     //Efface le dessin du canva
     clearCanvas() {
-        this.clear.addEventListener('click', (e) => {
-            e.preventDefault()
-            this.ctx.clearRect(0, 0, this.c.width, this.c.height)
-            this.isEmpty = true
-        })
+        this.ctx.clearRect(0, 0, this.c.width, this.c.height)
+        this.isEmpty = true
     }
 
     //Sauvagarde le canvas en image
     toImg() {
-        if (!!empty == false) {
-            let dataUrl = this.c.toDataURL('sign/png', 0.5);
-            console.log(dataUrl)
-        } else {
-            console.log('Veuillez signer le formulaire')
-        }
+        let dataUrl = this.c.toDataURL('sign/png', 0.5);
+        console.log(dataUrl)
     }
 
 }
