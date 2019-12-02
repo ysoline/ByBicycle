@@ -71,33 +71,39 @@
       <form id="booking">
         <h5 class=" my-4 font-weight-bold" id="info_station">Réservation</h5>
         <div class="form-group">
-          <input type="text" placeholder="Nom" name="name" id="name" class="form-control" />
+          <input type="text" placeholder="Nom" name="name" id="name" class="form-control">
         </div>
         <div class="form-group">
-          <input type="text" placeholder="Prénom" name="fn" id="fn" class="form-control" />
+          <input type="text" placeholder="Prénom" name="fn" id="fn" class="form-control">
         </div>
-        <div id="sign" class="m-4 d-flex flex-column align-items-center">
-          <div>Signature :</div>
-          <canvas width="195" height="150" id="canvas"></canvas>
-          <button id="clear_canvas" class="btn btn-primary small-btn mt-2">
-            Effacer signature
-          </button>
-        </div>
+        <div id='error_form'></div>
+        <button id="erase" class='btn btn-info btn-sm'>Effacer</button>
         <div class="form-group d-flex justify-content-center">
-          <input type="submit" value="Réserver" id="btn-booking" class="btn btn-success" />
+          <input type='button' value="Signer" id="sign_btn" class="btn btn-success mt-2" />
         </div>
-        <button id="goTimer" class="btn btn-danger">Lancer timer</button>
+
+        <div id='sign_form'>
+          <div id="sign" class="m-4 d-flex flex-column align-items-center">
+            <div>Signature :</div>
+            <canvas width="195" height="150" id="canvas"></canvas>
+            <button id="clear_canvas" class="btn btn-primary btn-sm mt-2">
+              Effacer signature
+            </button>
+            <div id='error_sign'></div>
+            <div class="form-group d-flex justify-content-center">
+              <input type="submit" value="Réserver" id="btn-booking" class="btn btn-success mt-2" />
+            </div>
+          </div>
+        </div>
       </form>
+
     </div>
   </div>
 
   <div id='current_booking'>
     <h5>Votre réservation :</h5>
     <div class="d-flex flex-column align-item-center justify-content-center" id="content_booking">
-      Nom de la station :
-      <p id='booking_name'></p>
-      Addresse de la station :
-      <p id='booking_addr'></p>
+      <p id='booking_info'></p>
       <p id="timer" class="font-weight-bold text-center"></p>
     </div>
   </div>

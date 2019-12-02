@@ -131,3 +131,15 @@
   border: 1px solid red;
   padding: 10px;
 }
+
+#error_form {
+  color: red;
+}
+
+#sign_form {
+  display: none;
+}
+
+#error_sign {
+  color: red;
+}
