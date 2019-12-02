@@ -2,46 +2,47 @@ class Client {
     constructor() {
         this.name = document.getElementById('name')
         this.fn = document.getElementById('fn')
-        this.updateInfo()
+        if (localStorage.getItem("name") && localStorage.getItem("firstname")) {
+            this.updateInfo()
+        }
     }
 
+    //Vérification de la saisie d'information
     info() {
 
         if (!!this.name.value && !!this.fn.value) {
             console.log(this.name.value + ' ' + this.fn.value);
-            this.checkStorage()
+            document.getElementById('error_form').innerHTML = ''
+            this.saveInfo()
             return true
         } else {
             console.log('veuillez renseigner tous les champs')
+            document.getElementById('error_form').innerHTML = 'Veuillez renseigner tous les champs'
             return false
         }
     }
 
+    //Permet d'effacer les valeurs du formulaire
     resetValue() {
-        this.name.innerHtml = ' '
-        this.fn.innerHTML = ' '
+        this.name.value = ''
+        this.fn.value = ''
         this.clearStorage()
     }
 
-
-
-    checkStorage() {
-        //Méthode pour vérifier si objet de stockage existent ou non
-        if (localStorage.getItem("name") && localStorage.getItem("firstname")) {
-            this.updateInfo()
-        } else {
-            this.setInfo()
-        }
-    }
+    //Remplis le formulaire lors que les objets storages sont connues
     updateInfo() {
-        this.name = localStorage.getItem('name')
-        this.fn = localStorage.getItem('firstname')
+        this.name.value = localStorage.getItem('name')
+        this.fn.value = localStorage.getItem('firstname')
 
     }
+
+    //Permet de sauvegarder les données formulaires lors de la validation du formulaire
     saveInfo() {
-        localStorage.setItem('name', this.name)
-        localStorage.setItem('firstname', this.fn)
+        localStorage.setItem('name', this.name.value)
+        localStorage.setItem('firstname', this.fn.value)
     }
+
+    //Permet de supprimer les objets storages
     clearStorage() {
         localStorage.clear()
     }
