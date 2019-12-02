@@ -40,7 +40,16 @@
   font-size: 2em;
   color: whitesmoke;
   margin: 0 auto;
-  left: 50%;
+  left: 45%;
+}
+
+#playBtn {
+  position: absolute;
+  top: 75%;
+  font-size: 2em;
+  color: whitesmoke;
+  margin: 0 auto;
+  right: 45%;
 }
 
 #mapid {
