@@ -43,15 +43,15 @@ class App {
     $('#prevBtn').on('click', () => {
       this.mySlider.preview();
     });
-
     document.addEventListener('keydown', (e) => {
       this.mySlider.pressKeyboard(e)
     })
 
-    document.getElementById('name').addEventListener('focus', () => {
-
+    document.getElementById('name').addEventListener('focus', (e)=>{
+      document.removeEventListener('keydown', (e) => {
+        this.mySlider.pressKeyboard(e)
+      })
     })
-
   }
   getBooking() { //Réservation 
     this.mySlider.keyboardIsActive = false

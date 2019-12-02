@@ -45,6 +45,7 @@ class Slider {
     }
 
     pressKeyboard(e) {
+        e.preventDefault()
         this.keyboardIsActive = true
         const key = (e.keyCode ? e.keyCode : e.which)
         if (key == 80) {
