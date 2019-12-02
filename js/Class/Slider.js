@@ -1,10 +1,10 @@
 class Slider {
 
-    constructor(target, table, repertory, time) {
+    constructor(target, table, repertory) {
         this.target = document.getElementById(target); //récupère la cible
         this.table = table, //déclare un tableau
             this.repertory = repertory, //indique le répertoire
-            this.time = time, //temps de transition
+            this.time = 5000, //temps de transition
             this.addimage = -1, //incrémentation           
             this.autoplay(); //fonction pause       
     }
@@ -14,11 +14,11 @@ class Slider {
         if (this.addimage == this.table.length - 1) {
             this.addimage = -1
         }
-        let that = this;
-        this.timeout = setTimeout(function () {
-            that.autoplay()
+
+        this.timeout = setTimeout(() => {
+            this.autoplay()
         }, this.time);
-    } //this représenterais la page. Utilisation d'une variable intermédiaire
+    }
 
     pause() {
         clearTimeout(this.timeout);
@@ -32,7 +32,8 @@ class Slider {
         }
         this.target.src = this.repertory + this.table[this.addimage] + '.jpeg';
         clearTimeout(this.timeout);
-        this.time = null;
+
+
     }
     preview() {
         this.addimage--;
@@ -41,13 +42,19 @@ class Slider {
         }
         this.target.src = this.repertory + this.table[this.addimage] + '.jpeg';
         clearTimeout(this.timeout);
-        this.time = null;
+
+    }
+
+    play() {
+        setInterval(() => {
+            this.next()
+        }, 5000)
     }
 
     pressKeyboard(e) {
-        e.preventDefault()
-        this.keyboardIsActive = true
+
         const key = (e.keyCode ? e.keyCode : e.which)
+
         if (key == 80) {
             console.log('pause')
             this.pause()
@@ -57,6 +64,8 @@ class Slider {
         } else if (key == 37) {
             console.log('précédente')
             this.preview()
+        } else {
+            e.preventDefault()
         }
     }
 }
