@@ -14,8 +14,7 @@ class Bookings {
         if (sessionStorage.getItem('timer')) {
 
             document.getElementById('current_booking').style.display = 'block'
-            document.getElementById('booking_info').innerHTML = 'Vélo réservé à la station' + sessionStorage.getItem('stationName') + ' par ' + localStorage.getItem('firstname') + ' ' + localStorage.getItem('name')
-
+            document.getElementById('booking_info').innerHTML = 'Vélo réservé à la station' + ' <span id="bookingStation">' + sessionStorage.getItem('stationName') + '</span> par ' + localStorage.getItem('firstname') + ' ' + localStorage.getItem('name')
             this.sec = sessionStorage.getItem('timer')
             this.detectBooking()
 
