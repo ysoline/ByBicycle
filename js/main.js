@@ -145,18 +145,15 @@ class App {
 
 
     //Evenement du canvas
-    let sign = (e)=> {
-      this.signature.mouseSign(e)
-    }
 
-    this.signature.c.addEventListener('mousedown', ()=>{
+    this.signature.c.addEventListener('mousedown', () => {
+      this.signature.mouseSign()
+    }, false)
 
-      this.signature.c.addEventListener('mousemove',sign,false)
+    this.signature.c.addEventListener('mouseup', () => {
+      console.log('click relacher')
+      //this.signature.c.removeEventListener('mousemove', sign, false)
 
-    },false)
-
-    this.signature.c.addEventListener('mouseup', ()=>{
-      this.signature.c.removeEventListener('mousemove', sign, false)
     })
 
 
@@ -226,6 +223,10 @@ class App {
         } else {
           document.getElementById('error_sign').innerHTML = 'Veuillez signer'
         }
+      }
+
+      if (this.timer.detectBooking()) {
+        alert('Réservation déjà en cour')
       }
     })
   }

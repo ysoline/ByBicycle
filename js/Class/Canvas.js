@@ -4,7 +4,7 @@ class Canvas {
         this.ctx = this.c.getContext('2d')
         this.ctx.fillStyle = "black"
         this.clear = document.getElementById('clear_canvas')
-        this.mouseSign()
+        //this.mouseSign()
         this.clearCanvas()
         this.ctx.save() //Sauvegarde l'état du canvas
         this.isEmpty = true
@@ -13,16 +13,7 @@ class Canvas {
 
     //Action de signer le canvas, souris ou doigt
     mouseSign(e) {
-        // this.c.addEventListener('mousemove', (e) => {
-
-        //     if (e.buttons === 1) {
-        //         this.mousePosition(e)
-        //         this.draw()
-        //         this.isEmpty = false
-        //     }
-        // }, false)
-
-        this.mousePosition(e)
+        this.mousePosition()
         this.draw()
         this.isEmpty = false
     }
@@ -40,14 +31,10 @@ class Canvas {
 
     //Récupère la position de la souris
     mousePosition(e) {
-        // this.x = e.offsetX
-        // this.y = e.offsetY
-        let rec = this.c.getBoundingClientRect()
-        return {
-            x : e.offsetX - rec.left,
-            y : e.clientY -rec.top
-        }
+        this.x = e.offsetX
+        this.y = e.offsetY
     }
+
 
     //Récupère la position de l'écran
     fingerPosition(e) {
