@@ -4,32 +4,40 @@ class Canvas {
         this.ctx = this.c.getContext('2d')
         this.ctx.fillStyle = "black"
         this.clear = document.getElementById('clear_canvas')
-        //this.mouseSign()
+        this.drawing = false
+        this.load()
         this.clearCanvas()
-        this.ctx.save() //Sauvegarde l'état du canvas
-        this.isEmpty = true
+        this.isEmpty = true //Défini si le canvas est vide
+
     }
 
-
-    //Action de signer le canvas, souris ou doigt
-    mouseSign(e) {
-        this.mousePosition()
-        this.draw()
-        this.isEmpty = false
-    }
-
-    fingerSign() {
-        this.c.addEventListener('touchmove', (e) => {
-            if (e.toucheStart === 1) {
-                this.fingerPosition(e)
+    load() {
+        this.c.addEventListener('mousedown', () => {
+            this.drawing = true
+        })
+        this.c.addEventListener('mouseup', () => {
+            this.drawing = false
+        })
+        this.c.addEventListener('mousemove', (e) => {
+            if (this.drawing) {
+                this.mousePosition(e)
                 this.draw()
-                this.isEmpty = false
             }
         })
-
     }
 
-    //Récupère la position de la souris
+    // fingerSign() {
+    //     this.c.addEventListener('touchmove', (e) => {
+    //         if (e.toucheStart === 1) {
+    //             this.fingerPosition(e)
+    //             this.draw()
+    //             this.isEmpty = false
+    //         }
+    //     })
+
+    // }
+
+    // //Récupère la position de la souris
     mousePosition(e) {
         this.x = e.offsetX
         this.y = e.offsetY
@@ -37,11 +45,11 @@ class Canvas {
 
 
     //Récupère la position de l'écran
-    fingerPosition(e) {
-        this.x = e.touches[0].offsetX
-        this.y = e.touches[0].offsetY
+    // fingerPosition(e) {
+    //     this.x = e.touches[0].offsetX
+    //     this.y = e.touches[0].offsetY
 
-    }
+    // }
 
     //Initialise le dessin
     draw() {
@@ -50,6 +58,7 @@ class Canvas {
         this.ctx.stroke()
         this.ctx.fillStyle
         this.ctx.fill()
+        this.isEmpty = false
     }
 
     //Efface le dessin du canva

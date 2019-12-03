@@ -143,22 +143,6 @@ class App {
 
   allListener() { //Réservation 
 
-
-    //Evenement du canvas
-
-    this.signature.c.addEventListener('mousedown', () => {
-      this.signature.mouseSign()
-    }, false)
-
-    this.signature.c.addEventListener('mouseup', () => {
-      console.log('click relacher')
-      //this.signature.c.removeEventListener('mousemove', sign, false)
-
-    })
-
-
-
-
     let showForm = document.getElementById("showBooking")
 
 
@@ -211,7 +195,7 @@ class App {
           this.stationName = document.getElementById('station_name')
           sessionStorage.setItem('stationName', this.stationName.innerHTML)
 
-          document.getElementById('booking_info').innerHTML = 'Vélo réservé à la station' + ' ' + sessionStorage.getItem('stationName') + ' par ' + localStorage.getItem('firstname') + ' ' + localStorage.getItem('name')
+          document.getElementById('booking_info').innerHTML = 'Vélo réservé à la station' + ' <span id="bookingStation">' + sessionStorage.getItem('stationName') + '</span> par ' + localStorage.getItem('firstname') + ' ' + localStorage.getItem('name')
 
           document.getElementById('error_sign').innerHTML = ''
 
