@@ -144,6 +144,24 @@ class App {
   allListener() { //Réservation 
 
 
+    //Evenement du canvas
+    let sign = (e)=> {
+      this.signature.mouseSign(e)
+    }
+
+    this.signature.c.addEventListener('mousedown', ()=>{
+
+      this.signature.c.addEventListener('mousemove',sign,false)
+
+    },false)
+
+    this.signature.c.addEventListener('mouseup', ()=>{
+      this.signature.c.removeEventListener('mousemove', sign, false)
+    })
+
+
+
+
     let showForm = document.getElementById("showBooking")
 
 

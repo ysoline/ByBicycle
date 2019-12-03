@@ -13,15 +13,18 @@ class Canvas {
 
     //Action de signer le canvas, souris ou doigt
     mouseSign(e) {
-        this.c.addEventListener('mousemove', (e) => {
+        // this.c.addEventListener('mousemove', (e) => {
 
-            if (e.buttons === 1) {
-                this.mousePosition(e)
-                this.draw()
-                this.isEmpty = false
-            }
-        }, false)
+        //     if (e.buttons === 1) {
+        //         this.mousePosition(e)
+        //         this.draw()
+        //         this.isEmpty = false
+        //     }
+        // }, false)
 
+        this.mousePosition(e)
+        this.draw()
+        this.isEmpty = false
     }
 
     fingerSign() {
@@ -37,8 +40,13 @@ class Canvas {
 
     //Récupère la position de la souris
     mousePosition(e) {
-        this.x = e.offsetX
-        this.y = e.offsetY
+        // this.x = e.offsetX
+        // this.y = e.offsetY
+        let rec = this.c.getBoundingClientRect()
+        return {
+            x : e.offsetX - rec.left,
+            y : e.clientY -rec.top
+        }
     }
 
     //Récupère la position de l'écran
