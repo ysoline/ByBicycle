@@ -113,6 +113,7 @@ nav li {
   height: 650px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   border-radius: 2px;
+  border: 1px solid rgba(158, 158, 158, 0.287);
 }
 
 /*Div contenant les informations station et formulaire*/
@@ -125,8 +126,9 @@ nav li {
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  border-radius: 2px;
-  background-color: white;
+  border-radius: 4px;
+  background-color: transparent;
+  border: 1px solid rgba(158, 158, 158, 0.287);
 }
 
 .fa-cc-mastercard {
@@ -137,11 +139,13 @@ nav li {
   height: 55px !important;
   padding: 8px;
   text-justify: auto;
+  color: rgb(246, 121, 4) !important;
 }
 
 #station_name {
   height: 30px !important;
   width: 80% !important;
+  color: rgb(246, 121, 4) !important;
 }
 
 #booking {
@@ -161,19 +165,27 @@ nav li {
   background-color: red;
   color: white;
   padding: 10px;
+  border-radius: 4px;
+  padding: 10px;
+  border: 1px solid white;
 }
+
 
 /*Style de "Station ouverte*/
 .open {
-  background-color: #4BBF73;
+  background-color: #2abe04;
   color: white;
+  border: 1px solid white;
+  border-radius: 4px;
   padding: 10px;
 }
 
 .available_bikes {
-  color: #2abe04;
+  color: white;
+  background-color: #2abe04;
   padding: 10px;
-  border: 1px solid #2abe04;
+  border: 1px solid white;
+  border-radius: 4px;
 }
 
 .available_bikes:before {
@@ -184,20 +196,26 @@ nav li {
 }
 
 .available_bike_stand {
-  color: #2abe04;
+  background-color: #2abe04;
+  color: white;
   padding: 10px;
-  border: 1px solid #2abe04;
+  border: 1px solid white;
+  border-radius: 4px;
 }
 
 .no_available_stand {
-  color: red;
+  background-color: red;
+  color: white;
   padding: 10px;
-  border: 1px solid red;
+  border: 1px solid white;
+  border-radius: 4px;
 }
 
 .no_bike {
-  color: red;
-  border: 1px solid red;
+  background-color: red;
+  color: white;
+  border: 1px solid white;
+  border-radius: 4px;
   padding: 10px;
 }
 
