@@ -12,14 +12,20 @@ class Markers {
         this.available_bikes = available_bikes;
         this.Lmarker = null;
 
-        this.iconBlue = L.icon({
-            iconUrl: '../img/marker/blue_marker.png',
+        this.iconGreen = L.icon({
+            iconUrl: '../img/marker/green_mark.png',
             iconSize: [30, 45],
             iconAnchor: [22, 50],
             className: 'markerActive'
         })
         this.iconRed = L.icon({
-            iconUrl: '../img/marker/red_marker.png',
+            iconUrl: '../img/marker/red_mark.png',
+            iconSize: [30, 45],
+            iconAnchor: [22, 50],
+            className: 'markerInactive'
+        });
+        this.iconOrange = L.icon({
+            iconUrl: '../img/marker/orange_mark.png',
             iconSize: [30, 45],
             iconAnchor: [22, 50],
             className: 'markerInactive'
@@ -35,7 +41,15 @@ class Markers {
                 this.lat,
                 this.lng,
             ], {
-                icon: this.iconBlue
+                icon: this.iconGreen
+            }).addTo(map.mapDesc);
+
+        } else if (this.statut == "CLOSED") {
+            this.Lmarker = L.marker([
+                this.lat,
+                this.lng,
+            ], {
+                icon: this.iconRed
             }).addTo(map.mapDesc);
 
         } else {
@@ -43,7 +57,7 @@ class Markers {
                 this.lat,
                 this.lng,
             ], {
-                icon: this.iconRed
+                icon: this.iconOrange
             }).addTo(map.mapDesc);
         }
     }

@@ -7,7 +7,9 @@ class Carousel {
         this.previewBtn = document.getElementById('prevBtn')
         this.currentSlide = 0
         let playing = true
-        this.interval = setInterval(this.next(), 5000)
+        this.interval = setInterval(() => {
+            this.gotoSlide()
+        }, 5000)
         this.listener()
     }
     next() {
@@ -16,10 +18,10 @@ class Carousel {
     preview() {
         this.gotoSlide(this.currentSlide - 1)
     }
-    gotoSlide(n) {
-        this.slides[this.currentSlide].className = 'slide'
-        this.currentSlide = (this.currentSlide + 1) % this.slides.length
-        this.slides[this.currentSlide].className = 'slide showing'
+    gotoSlide() {
+        this.slides[this.currentSlide].className = 'slide';
+        this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+        this.slides[this.currentSlide].className = 'slide showing';
     }
 
     pause() {
@@ -30,7 +32,7 @@ class Carousel {
 
     play() {
         this.playing = true
-        setTimeout(() => {
+        setInterval(() => {
             this.next()
         }, 5000)
     }
