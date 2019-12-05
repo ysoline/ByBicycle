@@ -70,7 +70,7 @@ class App {
               if (newMarker.available_bike_stands != 0) {
 
                 //Affiche le nombre de stands de vélos disponibles
-                document.getElementById('station_available_bike_stands').innerHTML = newMarker.available_bike_stands + ' Places disponibles'
+                document.getElementById('station_available_bike_stands').innerHTML = '<span class="d-flex available_bike_stand"> Places disponibles :' + newMarker.available_bike_stands + '</span>'
               } else {
                 //Pas de place de vélos disponibles
                 document.getElementById('station_available_bike_stands').innerHTML = "<span class='no_available_stand'>" + newMarker.available_bike_stands + " Pas de places disponibles</span>";
@@ -96,10 +96,6 @@ class App {
         }
       })
   }
-
-
-
-
 
   allListener() { //Réservation 
     //Création d'une variable pour controler du slider au clavier

@@ -2,6 +2,7 @@ class Carousel {
     constructor() {
         this.slides = document.querySelectorAll('#slides .slide')
         this.pauseBtn = document.getElementById('pauseBtn')
+        this.playBtn = document.getElementById('playBtn')
         this.nextBtn = document.getElementById('nextBtn')
         this.previewBtn = document.getElementById('prevBtn')
         this.currentSlide = 0
@@ -22,14 +23,12 @@ class Carousel {
     }
 
     pause() {
-        this.pauseBtn.innerHTML = "<i class='fas fa-play'></i>"
         this.playing = false
         clearTimeout(this.interval)
 
     }
 
     play() {
-        this.pauseBtn.innerHTML = "<i class='fas fa-pause'></i>"
         this.playing = true
         setTimeout(() => {
             this.next()
@@ -38,19 +37,26 @@ class Carousel {
 
     listener() {
         this.pauseBtn.addEventListener('click', () => {
-            if (this.playing) {
-                this.pause()
-            } else {
-                this.play()
-            }
+            this.pause()
+            this.pauseBtn.style.display = 'none'
+            this.playBtn.style.display = 'block'
+        })
+        this.playBtn.addEventListener('click', () => {
+            this.play()
+            this.pauseBtn.style.display = 'block'
+            this.playBtn.style.display = 'none'
         })
         document.getElementById('prevBtn').addEventListener('click', () => {
             this.pause()
             this.preview()
+            this.pauseBtn.style.display = 'none'
+            this.playBtn.style.display = 'block'
         })
         document.getElementById('nextBtn').addEventListener('click', () => {
             this.pause()
             this.next()
+            this.pauseBtn.style.display = 'none'
+            this.playBtn.style.display = 'block'
         })
     }
 

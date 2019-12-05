@@ -34,9 +34,20 @@
     <a id="prevBtn"><i class="fas fa-chevron-left"></i></a>
     <div class="d-flex justify-content-center">
       <a id="pauseBtn"><i class='fas fa-pause'></i></a>
+      <a id="playBtn"><i class='fas fa-play'></i></a>
     </div>
     <a id="nextBtn"><i class="fas fa-chevron-right"></i></a>
   </section>
+
+  <div id='current_booking'>
+    <div id="content_booking" class='d-flex flex-column align-items-center'>
+      <div class='border_booking'>
+        <h5 id='your_booking' class='text-center'>Votre réservation :</h5>
+        <p id='booking_info' class='text-center'></p>
+        <p id="timer" class='text-center'>Temps restant :</p>
+      </div>
+    </div>
+  </div>
 
   <div class="row d-flex justify-content-around">
 
@@ -44,7 +55,7 @@
 
     <div id="bloc_station" class="m-4 d-flex flex-column align-items-center">
 
-      <h5 class=" my-4 font-weight-bold" id="info_station">
+      <h5 class=" my-4 font-weight-bold text-center" id="info_station">
         Détail de la Station
       </h5>
 
@@ -63,7 +74,7 @@
         </div>
 
         <div class="d-flex mt-1">
-          <p class='d-flex available_bike_stand' id="station_available_bike_stands">
+          <p id="station_available_bike_stands">
           </p>
         </div>
       </div>
@@ -110,15 +121,6 @@
     </div>
   </div>
 
-  <div id='current_booking'>
-    <div class='d-flex justify-content-center flex-column align-items-center'>
-      <h5 id='your_booking'>Votre réservation :</h5>
-      <div id="content_booking" class='d-flex flex-column align-items-center'>
-        <p id='booking_info'></p>
-        <p id="timer"></p>
-      </div>
-    </div>
-  </div>
   <footer>
     <div class="blog-footer text-center p-3 mt-2">
       <p>

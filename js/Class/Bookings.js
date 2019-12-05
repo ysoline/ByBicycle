@@ -6,7 +6,7 @@ class Bookings {
         this.timerView = document.getElementById("timer")
         this.contentBooking = document.getElementById('content_booking')
 
-        this.nb = 1 //Temps pour réservation (20min)
+        this.nb = 5 //Temps pour réservation (20min)
         this.min = 0
         this.remainingSec = 0
         this.stopTimer()
@@ -25,7 +25,7 @@ class Bookings {
 
     detectBooking() {
         //s'active quand le client "signe" la réservation  
-        this.timerView.innerHTML = 'Temps restant : ' + this.min + ':' + this.remainingSec
+        this.timerView.innerHTML = this.min + ':' + this.remainingSec
         this.interval = setInterval(this.startTimer.bind(this), 1000) //S'execute toutes les secondes
 
     }
