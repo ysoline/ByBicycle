@@ -15,7 +15,7 @@
     <img src="img/logo/bybicycle_orange.png" alt="logo bybicycle" id="logo" />
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav col-12">
-        <li class="nav-item d-flex align-items-center justify-content-around col-12">
+        <li class="nav-item d-flex align-items-center justify-content-between col-12">
           <h1>Louez votre vélo !</h1>
           <h5 id="color-title">ville de Nantes</h5>
         </li>
@@ -24,15 +24,18 @@
   </nav>
 
   <section id="slider">
-    <img id="diapo" alt="slider" />
-    <div class="control d-flex justify-content-between align-items-center mx-4">
-      <a id="prevBtn"><i class="fas fa-chevron-left"></i></a>
-      <div class="d-flex justify-content-center">
-        <a id="pauseBtn" class='mx-2'><i class="fas fa-pause"></i></a>
-        <a id="playBtn" class='mx-2'><i class="fas fa-play"></i></a>
-      </div>
-      <a id="nextBtn"><i class="fas fa-chevron-right"></i></a>
+    <div id="slides">
+      <ul>
+        <li><img src="img/bike1.jpeg" class="slide showing"></li>
+        <li><img src="img/bike2.jpeg" class="slide"></li>
+        <li><img src="img/bike3.jpeg" class="slide"></li>
+      </ul>
     </div>
+    <a id="prevBtn"><i class="fas fa-chevron-left"></i></a>
+    <div class="d-flex justify-content-center">
+      <a id="pauseBtn"><i class='fas fa-pause'></i></a>
+    </div>
+    <a id="nextBtn"><i class="fas fa-chevron-right"></i></a>
   </section>
 
   <div class="row d-flex justify-content-around">
@@ -131,13 +134,13 @@
   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
 
   <script src="js/main.js"></script>
-  <script src="js/Class/Slider.js"></script>
   <script src="js/Class/AjaxGet.js"></script>
   <script src="js/Class/Bookings.js"></script>
   <script src="js/Class/Markers.js"></script>
   <script src="js/Class/Map.js"></script>
   <script src="js/Class/Client.js"></script>
   <script src="js/Class/Canvas.js"></script>
+  <script src="js/Class/Carousel.js"></script>
   <script>
     let newApp = new App();
   </script>

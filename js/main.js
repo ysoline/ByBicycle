@@ -3,13 +3,12 @@
 class App {
   constructor() {
     this.newMap = new Map(47.21837, -1.55624, mapid); //Défini sur Nantes
-    this.mySlider = new Slider('diapo', images, 'img/');
     this.signature = new Canvas()
+    this.carousel = new Carousel()
     this.client = new Client()
     this.timer = new Bookings()
     this.getAjax(this.newMap);
     this.allListener();
-    this.listenSlider()
   }
   getAjax(newMap) { //Récupération des informations de JCDecaux
     ajaxGet(
@@ -100,26 +99,13 @@ class App {
 
 
 
-  listenSlider() {
 
-    //interraction : bouton cliquer
-    $('#pauseBtn').on('click', () => {
-      this.mySlider.pause();
-    });
-    $('#playBtn').on('click', () => {
-      this.mySlider.play();
-    });
-    $('#nextBtn').on('click', () => {
-      this.mySlider.next();
-    });
-    $('#prevBtn').on('click', () => {
-      this.mySlider.preview();
-    });
 
+  allListener() { //Réservation 
     //Création d'une variable pour controler du slider au clavier
     //Active le controle clavier sur le slider
     let slider = (e) => {
-      this.mySlider.pressKeyboard(e)
+      this.carousel.pressKeyboard(e)
     }
     document.addEventListener('keydown', slider, true)
 
@@ -138,10 +124,6 @@ class App {
       }, true)
     }
 
-  }
-
-
-  allListener() { //Réservation 
 
     let showForm = document.getElementById("showBooking")
 
