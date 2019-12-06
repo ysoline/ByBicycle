@@ -53,6 +53,7 @@ class App {
                 document.getElementById('showBooking').style.display = "block";
                 document.getElementById('station_available_bike_stands').style.display = 'block';
                 document.getElementById('station_available_bikes').style.display = 'block';
+                document.getElementById('station_banking').style.display = 'block';
 
                 //Indique le nombrede vélos disponibles
                 document.getElementById('station_available_bikes').innerHTML = '<span class="available_bikes">Vélos disponibles : <span id="nb_bike">' + newMarker.available_bikes + '</span></span>';
@@ -182,13 +183,10 @@ class App {
 
           //Démarrage du timer
           this.timer.detectBooking()
+          
         } else {
           document.getElementById('error_sign').innerHTML = 'Veuillez signer'
         }
-      }
-
-      if (this.timer.detectBooking()) {
-        alert('Réservation déjà en cour')
       }
     })
   }

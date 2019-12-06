@@ -67,8 +67,9 @@ class Bookings {
 
     refreshPage() { //Lorsqu'une réservation est finie, afin de permettre une nouvelle réservation
         console.log('Refresh de la page dans 30s')
+        alert('Votre réservation a expirée, raffraîchissement automatique dans 10 secondes')
         setTimeout(() => {
             document.location.reload(true)
-        }, 30000)
+        }, 10000)
     }
 }

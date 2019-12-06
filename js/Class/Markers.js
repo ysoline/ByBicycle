@@ -52,7 +52,7 @@ class Markers {
                 icon: this.iconRed
             }).addTo(map.mapDesc);
 
-        } else {
+        }  else {
             this.Lmarker = L.marker([
                 this.lat,
                 this.lng,
