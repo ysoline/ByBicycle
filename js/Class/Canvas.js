@@ -5,13 +5,14 @@ class Canvas {
         this.ctx.fillStyle = "black"
         this.clear = document.getElementById('clear_canvas')
         this.drawing = false
-        this.load()
+        this.loadMouse()
+        this.loadTouch()
         this.clearCanvas()
         this.isEmpty = true //Défini si le canvas est vide
 
     }
 
-    load() {
+    loadMouse() {
         this.c.addEventListener('mousedown', () => {
             this.drawing = true
         })
@@ -25,31 +26,43 @@ class Canvas {
             }
         })
     }
+    loadTouch() {
 
-    // fingerSign() {
-    //     this.c.addEventListener('touchmove', (e) => {
-    //         if (e.toucheStart === 1) {
-    //             this.fingerPosition(e)
-    //             this.draw()
-    //             this.isEmpty = false
-    //         }
-    //     })
+        this.c.addEventListener('touchstart', (e) => {
+            e.preventDefault()
+            if (e.touches.length > 0) {
+                this.drawing = true
+            }
+        })
+        this.c.addEventListener('touchend', (e) => {
+            e.preventDefault()
+            if (e.touches.length > 0) {
+                this.drawing = false
+            }
+        })
+        this.c.addEventListener('touchmove', (e) => {
+            e.preventDefault()
+            if (e.touches.length > 0) {
+                this.fingerPosition(e)
+                this.draw()
+                console.log(e.touches.length)
+            }
+        })
+    }
 
-    // }
 
-    // //Récupère la position de la souris
+    //Récupère la position de la souris
     mousePosition(e) {
         this.x = e.offsetX
         this.y = e.offsetY
     }
 
 
-    //Récupère la position de l'écran
-    // fingerPosition(e) {
-    //     this.x = e.touches[0].offsetX
-    //     this.y = e.touches[0].offsetY
-
-    // }
+    //Récupère la position de l 'écran
+    fingerPosition(e) {
+        this.x = e.touches[0].clientX
+        this.y = e.touches[0].clientY
+    }
 
     //Initialise le dessin
     draw() {

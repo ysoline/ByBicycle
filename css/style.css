@@ -25,11 +25,14 @@ nav li {
   color: #838383ca !important;
   font-weight: bold !important;
 }
-#name, #fn{
+
+#name,
+#fn {
   background-color: #21242b !important;
-  border-bottom: 1px solid rgb(246, 121, 4) !important;;
-  color : rgb(246, 121, 4) !important;
+  border-bottom: 1px solid rgb(246, 121, 4) !important;
+  color: rgb(246, 121, 4) !important;
 }
+
 /*/////////////////////////////////////////////////////////////////
 /* LOGO
 ////////////////////////////////////////////////////////////////*/
@@ -185,7 +188,7 @@ nav li {
 }
 
 .available_bikes {
-  color:  #2abe04;
+  color: #2abe04;
   /* background-color: #2abe04; */
   padding: 10px;
   font-weight: bold;
@@ -202,7 +205,7 @@ nav li {
 
 .available_bike_stand {
   /* background-color: #2abe04; */
-  color:  #2abe04;
+  color: #2abe04;
   padding: 10px;
   /* border: 1px solid white; */
   /* border-radius: 4px; */
