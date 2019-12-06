@@ -68,6 +68,7 @@ class Canvas {
     draw() {
         this.ctx.beginPath()
         this.ctx.arc(this.x, this.y, 3, 0, Math.PI * 2)
+        this.ctx.closePath()
         this.ctx.stroke()
         this.ctx.fillStyle
         this.ctx.fill()
