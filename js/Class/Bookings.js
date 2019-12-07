@@ -5,28 +5,32 @@ class Bookings {
     constructor() {
         this.timerView = document.getElementById("timer")
         this.contentBooking = document.getElementById('content_booking')
-
-        this.nb = 5 //Temps pour réservation (20min)
+        this.nb = 20
         this.min = 0
         this.remainingSec = 0
+        this.isBooking = false
         this.stopTimer()
 
+        //Detecte si il existe déjà une réservation en cours lors d'un refresh
         if (sessionStorage.getItem('timer')) {
 
             document.getElementById('current_booking').style.display = 'block'
             document.getElementById('booking_info').innerHTML = 'Vélo réservé à la station' + ' <span id="bookingStation">' + sessionStorage.getItem('stationName') + '</span> par ' + localStorage.getItem('firstname') + ' ' + localStorage.getItem('name')
             this.sec = sessionStorage.getItem('timer')
             this.detectBooking()
-
+            this.isBooking = true
         } else {
             this.sec = this.nb * 60
         }
+
     }
 
     detectBooking() {
+        clearInterval(this.interval)
         //s'active quand le client "signe" la réservation  
         this.timerView.innerHTML = this.min + ':' + this.remainingSec
         this.interval = setInterval(this.startTimer.bind(this), 1000) //S'execute toutes les secondes
+        this.isBooking = true
 
     }
 
@@ -54,6 +58,7 @@ class Bookings {
 
     stopTimer() { //Stop le timer 
         clearInterval(this.interval)
+        this.isBooking = false
     }
 
 
@@ -62,14 +67,19 @@ class Bookings {
     }
 
     clearStorage() { //Détruit l'objet storage une fois le temps écoulé
-        sessionStorage.removeItem('timer')
+        sessionStorage.clear('timer')
     }
 
     refreshPage() { //Lorsqu'une réservation est finie, afin de permettre une nouvelle réservation
-        console.log('Refresh de la page dans 30s')
-        alert('Votre réservation a expirée, raffraîchissement automatique dans 10 secondes')
+        console.log('Refresh de la page dans 10s')
         setTimeout(() => {
             document.location.reload(true)
         }, 10000)
+    }
+    removeBooking() {
+        console.log('remove')
+        clearInterval(this.interval)
+        this.clearStorage()
+        this.sec = this.nb * 60
     }
 }
