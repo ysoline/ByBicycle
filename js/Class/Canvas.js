@@ -22,7 +22,7 @@ class Canvas {
         this.c.addEventListener('mousemove', (e) => {
             if (this.drawing) {
                 this.mousePosition(e)
-                this.draw()
+                this.draw(this.x, this.y)
             }
         })
     }
@@ -34,19 +34,18 @@ class Canvas {
                 this.drawing = true
             }
         })
-        this.c.addEventListener('touchend', (e) => {
-            e.preventDefault()
-            if (e.touches.length > 0) {
-                this.drawing = false
-            }
-        })
+
         this.c.addEventListener('touchmove', (e) => {
             e.preventDefault()
-            if (e.touches.length > 0) {
-                this.fingerPosition(e)
-                this.draw()
-                console.log(e.touches.length)
-            }
+
+            let touchPos = this.fingerPosition(e)
+            this.ctx.beginPath()
+            this.ctx.arc(touchPos.x, touchPos.y, 3, 0, Math.PI * 2)
+            this.ctx.closePath()
+            this.ctx.stroke()
+            this.ctx.fillStyle
+            this.ctx.fill()
+            this.isEmpty = false
         })
     }
 
@@ -60,8 +59,12 @@ class Canvas {
 
     //Récupère la position de l 'écran
     fingerPosition(e) {
-        this.x = e.touches[0].clientX
-        this.y = e.touches[0].clientY
+        let rect = this.c.getBoundingClientRect(e)
+
+        return {
+            x: (e.touches['0'].clientX - rect.left) * (this.c.width / rect.width),
+            y: (e.touches['0'].clientY - rect.top) * (this.c.height / rect.height)
+        }
     }
 
     //Initialise le dessin
