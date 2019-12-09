@@ -12,6 +12,7 @@ class Canvas {
 
     }
 
+    //Permet de détecter les actions de la souris
     loadMouse() {
         this.c.addEventListener('mousedown', () => {
             this.drawing = true
@@ -26,6 +27,8 @@ class Canvas {
             }
         })
     }
+
+    //Permet de détecter les actions lié au tactil
     loadTouch() {
 
         this.c.addEventListener('touchstart', (e) => {
@@ -57,7 +60,7 @@ class Canvas {
     }
 
 
-    //Récupère la position de l 'écran
+    //Récupère la position du doigt sur l'écran
     fingerPosition(e) {
         let rect = this.c.getBoundingClientRect(e)
 

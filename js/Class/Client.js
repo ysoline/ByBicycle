@@ -7,7 +7,7 @@ class Client {
         }
     }
 
-    //Vérification de la saisie d'information
+    //Vérification de la saisie d'informations
     info() {
 
         if (!!this.name.value && !!this.fn.value) {
@@ -44,7 +44,8 @@ class Client {
 
     //Permet de supprimer les objets storages
     clearStorage() {
-        localStorage.clear()
+        localStorage.removeItem('name')
+        localStorage.removeItem('firstname')
     }
 
 }
