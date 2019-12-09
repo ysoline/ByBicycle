@@ -12,7 +12,7 @@ class App {
     this.allListener();
   }
   getAjax(newMap) { //Récupération des informations de JCDecaux
-    ajaxGet(
+    ajax(
       "https://api.jcdecaux.com/vls/v1/stations?contract=nantes&apiKey=a0ce65c3665035a0a4c7ef02805b70e171c87636",
       function (response) {
         var stations = JSON.parse(response);

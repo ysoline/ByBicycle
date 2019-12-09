@@ -33,7 +33,7 @@ class Markers {
     }
 
 
-
+//Personnalisation des icons sur la map
     addMap(map) {
 
         if (this.statut == "OPEN" && this.available_bikes != 0) {
