@@ -12,6 +12,7 @@ class Bookings {
         this.stopTimer()
 
         //Detecte si il existe déjà une réservation en cours lors d'un refresh
+        //Sinon réinitialise le temps à 20min
         if (sessionStorage.getItem('timer')) {
 
             document.getElementById('current_booking').style.display = 'block'
@@ -25,21 +26,22 @@ class Bookings {
 
     }
 
+    //Mise en route du timer
     detectBooking() {
         clearInterval(this.interval)
-        //s'active quand le client "signe" la réservation  
+
         this.timerView.innerHTML = this.min + ':' + this.remainingSec
         this.interval = setInterval(this.startTimer.bind(this), 1000) //S'execute toutes les secondes
         this.isBooking = true
 
     }
-
-    startTimer() { //Décrémentation
+//Déconte
+    startTimer() { 
 
         this.min = Math.round((this.sec - 30) / 60)
         this.remainingSec = this.sec % 60
 
-        if (this.remainingSec < 10) {
+        if (this.remainingSec < 10) { //Rajoute un 0 devant les chiffres, permet l'affichage en nombre
             this.remainingSec = '0' + this.remainingSec
         }
 
@@ -56,7 +58,8 @@ class Bookings {
         }
     }
 
-    stopTimer() { //Stop le timer 
+//Stop le timer 
+    stopTimer() { 
         clearInterval(this.interval)
         this.isBooking = false
     }
@@ -67,7 +70,7 @@ class Bookings {
     }
 
     clearStorage() { //Détruit l'objet storage une fois le temps écoulé
-        sessionStorage.clear('timer')
+        sessionStorage.removeItem('timer')
     }
 
     refreshPage() { //Lorsqu'une réservation est finie, afin de permettre une nouvelle réservation
@@ -76,7 +79,7 @@ class Bookings {
             document.location.reload(true)
         }, 10000)
     }
-    removeBooking() {
+    removeBooking() { //Supprime le timer en cours pour un nouveau
         console.log('remove')
         clearInterval(this.interval)
         this.clearStorage()
