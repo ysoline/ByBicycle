@@ -69,12 +69,20 @@ class Carousel {
         if (key == 80) {
             console.log('pause')
             this.pause()
+            this.pauseBtn.style.display = 'none'
+            this.playBtn.style.display = 'block'
         } else if (key == 39) {
             console.log('suivante')
+            this.pause()
             this.next();
+            this.pauseBtn.style.display = 'none'
+            this.playBtn.style.display = 'block'
         } else if (key == 37) {
             console.log('précédente')
+            this.pause()
             this.preview()
+            this.pauseBtn.style.display = 'none'
+            this.playBtn.style.display = 'block'
         }
     }
 

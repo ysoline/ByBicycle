@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang='fr'>
 
 <head>
   <meta charset="UTF-8">
@@ -22,23 +22,25 @@
   </nav>
 
   <div class='container-fluid'>
-    <section id="slider">
+
+    <div id="slider" class="d-flex align-items-center">
+      <a id="prevBtn"><i class="fas fa-chevron-left"></i></a>
       <div id="slides">
         <ul>
-          <li><img src="img/bike1.jpeg" class="slide showing"></li>
-          <li><img src="img/bike2.jpeg" class="slide"></li>
-          <li><img src="img/bike3.jpeg" class="slide"></li>
+          <li><img src="img/slide1.png" class="slide showing" alt="Indication utilisation application"></li>
+          <li><img src="img/slide2.png" class="slide" alt="image représentant formulaire réservation"></li>
+          <li><img src="img/slide3.png" class="slide" alt="image représentant la réservation effective"></li>
         </ul>
       </div>
-      <div class='d-flex justify-content-around'>
-        <a id="prevBtn"><i class="fas fa-chevron-left"></i></a>
-        <div class="d-flex justify-content-center">
-          <a id="pauseBtn"><i class='fas fa-pause'></i></a>
-          <a id="playBtn"><i class='fas fa-play'></i></a>
-        </div>
-        <a id="nextBtn"><i class="fas fa-chevron-right"></i></a>
-      </div>
-    </section>
+      <a id="nextBtn"><span class="fas fa-chevron-right"></span></a>
+    </div>
+    <div class="d-flex justify-content-center">
+      <a id="pauseBtn"><span class='fas fa-pause'></span></a>
+      <a id="playBtn"><span class='fas fa-play'></span></a>
+    </div>
+
+
+
 
     <div class="d-flex justify-content-around flex-column flex-lg-row">
 
@@ -96,11 +98,13 @@
 
         <form id="booking">
           <div id='input_booking'>
-            <h5 class=" my-4 font-weight-bold text-light" id="info_station">Réservation</h5>
+            <h5 class=" my-4 font-weight-bold text-light">Réservation</h5>
             <div class="form-group">
+              <label for="name" type="hidden"></label>
               <input type="text" placeholder="Nom" name="name" id="name" class="form-control enterForm">
             </div>
             <div class="form-group">
+              <label for="fn" type='hidden'></label>
               <input type="text" placeholder="Prénom" name="fn" id="fn" class="form-control enterForm">
             </div>
             <div id='error_form'></div>
@@ -129,7 +133,7 @@
     </div>
   </div>
   <div id='current_booking' class="m-3">
-    <div id="content_booking" class='d-flex flex-column align-items-center'>
+    <div id="content_booking" class='d-flex flex-column align-items-center col-12'>
       <div class='border_booking'>
         <h5 id='your_booking' class='text-center'>Votre réservation :</h5>
         <p id='booking_info' class='text-center'></p>
@@ -153,7 +157,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
 
-  <script src="js/main.js"></script>
+  <script src="main.js"></script>
   <script src="js/Class/AjaxGet.js"></script>
   <script src="js/Class/Bookings.js"></script>
   <script src="js/Class/Markers.js"></script>
@@ -162,7 +166,7 @@
   <script src="js/Class/Canvas.js"></script>
   <script src="js/Class/Carousel.js"></script>
   <script>
-    let newApp = new App();
+    let newMain = new Main();
   </script>
 </body>
 

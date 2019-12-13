@@ -1,15 +1,15 @@
 //Cette classe permet de gérée l'ensemble des autres classes avec la création d'objet.
 
-class App {
+class Main {
   constructor() {
     this.newMap = new Map(47.21837, -1.55624, mapid); //Défini sur Nantes
     this.signature = new Canvas()
     this.carousel = new Carousel()
     this.client = new Client()
     this.timer = new Bookings()
-    this.slideControl()
     this.getAjax(this.newMap);
-    this.allListener();
+    this.allListener()
+    this.slideControl()
   }
   getAjax(newMap) { //Récupération des informations de JCDecaux
     ajaxGet(
@@ -34,7 +34,11 @@ class App {
 
           //Ecoute d'évenement marker
           newMarker.Lmarker.addEventListener('click', () => {
-
+            document.getElementById('bloc_station').scrollIntoView({
+              behavior: "smooth",
+              block: "end",
+              inline: "nearest"
+            })
             document.getElementById('bloc_station').style.opacity = 1;
             document.getElementById('booking').style.display = "none"
             //Affiche nom station en enlevant les chiffres et charactère spéciaux
@@ -199,6 +203,11 @@ class App {
           this.signature.clearCanvas()
 
           document.getElementById('sign_form').style.display = 'none'
+          document.getElementById('current_booking').scrollIntoView({
+            behavior: "smooth",
+            block: "end",
+            inline: "nearest"
+          })
         }
       } else {
         document.getElementById('error_sign').innerHTML = 'Veuillez signer'
