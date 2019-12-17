@@ -1,10 +1,15 @@
-//Récupération des informations stations lié à JC Decaux
-class Ajax {
+//Cette classe permet de gérée l'ensemble des autres classes avec la création d'objet.
+
+class App {
   constructor() {
     this.newMap = new Map(47.21837, -1.55624, mapid); //Défini sur Nantes
+    this.signature = new Canvas()
+    this.carousel = new Carousel()
+    this.client = new Client()
+    this.timer = new Bookings()
+    this.slideControl()
     this.getAjax(this.newMap);
-    // this.allListener()
-    // this.slideControl()
+    this.allListener();
   }
   getAjax(newMap) { //Récupération des informations de JCDecaux
     ajaxGet(
@@ -29,11 +34,7 @@ class Ajax {
 
           //Ecoute d'évenement marker
           newMarker.Lmarker.addEventListener('click', () => {
-            document.getElementById('bloc_station').scrollIntoView({
-              behavior: "smooth",
-              block: "end",
-              inline: "nearest"
-            })
+
             document.getElementById('bloc_station').style.opacity = 1;
             document.getElementById('booking').style.display = "none"
             //Affiche nom station en enlevant les chiffres et charactère spéciaux
@@ -97,122 +98,114 @@ class Ajax {
         }
       })
   }
-
-}
-
-let signature = new Canvas()
-let carousel = new Carousel()
-let client = new Client()
-let timer = new Bookings()
-
-//Création d'une variable pour controle du slider au clavier
-//Active le controle clavier sur le slider
-let slider = (e) => {
-  this.carousel.pressKeyboard(e)
-}
-document.addEventListener('keydown', slider, true)
-
-//Désactive le controle clavier du slider lorsqu'on ce situe dans les inputs du formulaire
-//Utilisation d'une boucle pour récupérer tous les inputs avec la classe demandée
-//Gestion des écouteurs du clavier
-
-let enterForm = document.getElementsByClassName('enterForm')
-
-for (let i = 0; i < enterForm.length; i++) {
-  enterForm[i].addEventListener('focusin', () => {
-    document.removeEventListener('keydown', slider, true)
-  }, true)
-  enterForm[i].addEventListener('focusout', () => {
-    document.addEventListener('keydown', slider, true)
-  }, true)
-}
-
-
-//Permet de supprimer le contenu du canvas
-document.getElementById('clear_canvas').addEventListener('click', (e) => {
-  e.preventDefault()
-  this.signature.clearCanvas()
-})
-
-//Affichage le formulaire de réservation (nom & prénom)
-let showForm = document.getElementById("showBooking")
-
-//Apparation du formulaire de réservation lors du click sur le bouton "Effectuer une réservation"
-showForm.addEventListener("click", (e) => {
-
-  //showForm.style.display = "none";
-  document.getElementById("booking").style.display = "block"
-  document.getElementById('input_booking').style.display = 'block'
-});
-
-//Permet d'effacer les informations du formulaire de réservation (nom & prénom)
-document.getElementById('erase').addEventListener('click', (e) => {
-  this.client.resetValue()
-})
-
-//Vérifie que les champs nom et prénom ne soit pas vide, puis affiche formulaire signature
-document.getElementById('sign_btn').addEventListener("click", () => {
-  this.name = document.getElementById('name').value
-  this.fn = document.getElementById('fn').value
-  if (!!this.name && !!this.fn) {
-    document.getElementById('sign_form').style.display = 'block'
-    document.getElementById('input_booking').style.display = 'none'
-  } else {
-    document.getElementById('error_form').innerHTML = 'Veuillez remplir tous les champs'
-  }
-});
-
-
-//Enregistrement d'une réservation quand conditions remplies
-document.getElementById('booking').addEventListener('submit', (e) => {
-
-  e.preventDefault();
-
-  //Action de vérifier les informations saisies du formulaire
-  this.client.info()
-
-  //Si le formulaire de réservation renvoie TRUE
-  if (this.client.info() == true) {
-
-    //Vérifie si un dessin est créé
-    if (this.signature.isEmpty == false) { //si la signature n'est pas vide, alors on continue la réservation
-
-
-      document.getElementById('current_booking').style.display = 'block' //affiche l'espace signature
-
-      //Sauvegarde le nom de la station lors de la réservation, et renvoie un message contenant les informations de réservation
-      this.stationName = document.getElementById('station_name')
-      sessionStorage.setItem('stationName', this.stationName.innerHTML)
-
-      document.getElementById('booking_info').innerHTML = 'Vélo réservé à la station' + ' <span id="bookingStation">' + sessionStorage.getItem('stationName') + '</span> par ' + localStorage.getItem('firstname') + ' ' + localStorage.getItem('name')
-
-      document.getElementById('error_sign').innerHTML = '' //cache le message d'erreur si la signature est présente
-
-      //Sauvegarde la signature sous format image 
-      this.signature.toImg()
-
-      if (this.timer.isBooking) {
-        this.timer.removeBooking() ///Fait d'annuler une réservation            
-        sessionStorage.setItem('stationName', this.stationName.innerHTML)
-        //Démarrage du timer          
-        this.timer.detectBooking()
-      } else {
-        //Démarrage du timer          
-        this.timer.detectBooking()
-      }
-      //efface la signature
-      this.signature.clearCanvas()
-
-      document.getElementById('sign_form').style.display = 'none'
-      document.getElementById('current_booking').scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-        inline: "nearest"
-      })
+  slideControl() {
+    //Création d'une variable pour controle du slider au clavier
+    //Active le controle clavier sur le slider
+    let slider = (e) => {
+      this.carousel.pressKeyboard(e)
     }
-  } else {
-    document.getElementById('error_sign').innerHTML = 'Veuillez signer'
+    document.addEventListener('keydown', slider, true)
+
+    //Désactive le controle clavier du slider lorsqu'on ce situe dans les inputs du formulaire
+    //Utilisation d'une boucle pour récupérer tous les inputs avec la classe demandée
+    //Gestion des écouteurs du clavier
+
+    let enterForm = document.getElementsByClassName('enterForm')
+
+    for (let i = 0; i < enterForm.length; i++) {
+      enterForm[i].addEventListener('focusin', () => {
+        document.removeEventListener('keydown', slider, true)
+      }, true)
+      enterForm[i].addEventListener('focusout', () => {
+        document.addEventListener('keydown', slider, true)
+      }, true)
+    }
   }
+  allListener() { //Réservation 
+
+    //Permet de supprimer le contenu du canvas
+    document.getElementById('clear_canvas').addEventListener('click', (e) => {
+      e.preventDefault()
+      this.signature.clearCanvas()
+    })
+
+    //Affichage le formulaire de réservation (nom & prénom)
+    let showForm = document.getElementById("showBooking")
+
+    //Apparation du formulaire de réservation lors du click sur le bouton "Effectuer une réservation"
+    showForm.addEventListener("click", (e) => {
+
+      //showForm.style.display = "none";
+      document.getElementById("booking").style.display = "block"
+      document.getElementById('input_booking').style.display = 'block'
+    });
+
+    //Permet d'effacer les informations du formulaire de réservation (nom & prénom)
+    document.getElementById('erase').addEventListener('click', (e) => {
+      this.client.resetValue()
+    })
+
+    //Vérifie que les champs nom et prénom ne soit pas vide, puis affiche formulaire signature
+    document.getElementById('sign_btn').addEventListener("click", () => {
+      this.name = document.getElementById('name').value
+      this.fn = document.getElementById('fn').value
+      if (!!this.name && !!this.fn) {
+        document.getElementById('sign_form').style.display = 'block'
+        document.getElementById('input_booking').style.display = 'none'
+      } else {
+        document.getElementById('error_form').innerHTML = 'Veuillez remplir tous les champs'
+      }
+    });
 
 
-})
+    //Enregistrement d'une réservation quand conditions remplies
+    document.getElementById('booking').addEventListener('submit', (e) => {
+
+      e.preventDefault();
+
+      //Action de vérifier les informations saisies du formulaire
+      this.client.info()
+
+      //Si le formulaire de réservation renvoie TRUE
+      if (this.client.info() == true) {
+
+        //Vérifie si un dessin est créé
+        if (this.signature.isEmpty == false) { //si la signature n'est pas vide, alors on continue la réservation
+
+
+          document.getElementById('current_booking').style.display = 'block' //affiche l'espace signature
+
+          //Sauvegarde le nom de la station lors de la réservation, et renvoie un message contenant les informations de réservation
+          this.stationName = document.getElementById('station_name')
+          sessionStorage.setItem('stationName', this.stationName.innerHTML)
+
+          document.getElementById('booking_info').innerHTML = 'Vélo réservé à la station' + ' <span id="bookingStation">' + sessionStorage.getItem('stationName') + '</span> par ' + localStorage.getItem('firstname') + ' ' + localStorage.getItem('name')
+
+          document.getElementById('error_sign').innerHTML = '' //cache le message d'erreur si la signature est présente
+
+          //Sauvegarde la signature sous format image 
+          this.signature.toImg()
+
+          if (this.timer.isBooking) {
+            this.timer.removeBooking() ///Fait d'annuler une réservation            
+            sessionStorage.setItem('stationName', this.stationName.innerHTML)
+            //Démarrage du timer          
+            this.timer.detectBooking()
+          } else {
+            //Démarrage du timer          
+            this.timer.detectBooking()
+          }
+          //efface la signature
+          this.signature.clearCanvas()
+
+          document.getElementById('sign_form').style.display = 'none'
+        }
+      } else {
+        document.getElementById('error_sign').innerHTML = 'Veuillez signer'
+      }
+
+
+    })
+
+  }
+}
