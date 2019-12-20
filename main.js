@@ -108,7 +108,7 @@ let timer = new Bookings()
 //Création d'une variable pour controle du slider au clavier
 //Active le controle clavier sur le slider
 let slider = (e) => {
-  this.carousel.pressKeyboard(e)
+  carousel.pressKeyboard(e)
 }
 document.addEventListener('keydown', slider, true)
 
@@ -131,7 +131,7 @@ for (let i = 0; i < enterForm.length; i++) {
 //Permet de supprimer le contenu du canvas
 document.getElementById('clear_canvas').addEventListener('click', (e) => {
   e.preventDefault()
-  this.signature.clearCanvas()
+  signature.clearCanvas()
 })
 
 //Affichage le formulaire de réservation (nom & prénom)
@@ -147,13 +147,13 @@ showForm.addEventListener("click", (e) => {
 
 //Permet d'effacer les informations du formulaire de réservation (nom & prénom)
 document.getElementById('erase').addEventListener('click', (e) => {
-  this.client.resetValue()
+  client.resetValue()
 })
 
 //Vérifie que les champs nom et prénom ne soit pas vide, puis affiche formulaire signature
 document.getElementById('sign_btn').addEventListener("click", () => {
-  this.name = document.getElementById('name').value
-  this.fn = document.getElementById('fn').value
+  name = document.getElementById('name').value
+  fn = document.getElementById('fn').value
   if (!!this.name && !!this.fn) {
     document.getElementById('sign_form').style.display = 'block'
     document.getElementById('input_booking').style.display = 'none'
@@ -169,13 +169,13 @@ document.getElementById('booking').addEventListener('submit', (e) => {
   e.preventDefault();
 
   //Action de vérifier les informations saisies du formulaire
-  this.client.info()
+  client.info()
 
   //Si le formulaire de réservation renvoie TRUE
-  if (this.client.info() == true) {
+  if (client.info() == true) {
 
     //Vérifie si un dessin est créé
-    if (this.signature.isEmpty == false) { //si la signature n'est pas vide, alors on continue la réservation
+    if (signature.isEmpty == false) { //si la signature n'est pas vide, alors on continue la réservation
 
 
       document.getElementById('current_booking').style.display = 'block' //affiche l'espace signature
@@ -189,19 +189,19 @@ document.getElementById('booking').addEventListener('submit', (e) => {
       document.getElementById('error_sign').innerHTML = '' //cache le message d'erreur si la signature est présente
 
       //Sauvegarde la signature sous format image 
-      this.signature.toImg()
+      signature.toImg()
 
-      if (this.timer.isBooking) {
-        this.timer.removeBooking() ///Fait d'annuler une réservation            
-        sessionStorage.setItem('stationName', this.stationName.innerHTML)
+      if (timer.isBooking) {
+        timer.removeBooking() ///Fait d'annuler une réservation            
+        sessionStorage.setItem('stationName', stationName.innerHTML)
         //Démarrage du timer          
-        this.timer.detectBooking()
+        timer.detectBooking()
       } else {
         //Démarrage du timer          
-        this.timer.detectBooking()
+        timer.detectBooking()
       }
       //efface la signature
-      this.signature.clearCanvas()
+      signature.clearCanvas()
 
       document.getElementById('sign_form').style.display = 'none'
       document.getElementById('current_booking').scrollIntoView({
